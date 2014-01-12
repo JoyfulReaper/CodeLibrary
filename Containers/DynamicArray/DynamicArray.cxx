@@ -211,6 +211,7 @@ void DynamicArray<T>::resize()
     data = newData;
 }
 
+/* broken... */
 template <class T>
 size_t DynamicArray<T>::binarySearch(size_t first, size_t last, const T &key)
 {
