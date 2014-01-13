@@ -12,12 +12,10 @@ template <class T>
 DynamicArray<T>::DynamicArray(size_t cap)
 {
     capacity = cap;
-
     if(capacity < 1)
-    capacity = 1;
+	capacity = 1;
 
     eltsInUse = 0;
-
     data = new T[capacity];
 }
 
@@ -50,12 +48,12 @@ DynamicArray<T> DynamicArray<T>::operator=(DynamicArray<T> rhs)
     capacity = rhs.capacity;
     eltsInUse = rhs.eltsInUse;
     if (data != nullptr)
-    delete[] data;
+	delete[] data;
 
     data = new T[capacity];
     if (eltsInUse != 0)
-    for (size_t i = 0; i < eltsInUse; i++)
-    data[i] = rhs.data[i];
+	for (size_t i = 0; i < eltsInUse; i++)
+	    data[i] = rhs.data[i];
 
     return (*this);
 }
@@ -69,7 +67,7 @@ void DynamicArray<T>::print(std::ostream &out, char delimiter) const
     {
 	out << data[i];
 	if (i < eltsInUse - 1)
-	out << delimiter;
+	    out << delimiter;
     }
     out << std::endl;
 }
@@ -108,45 +106,50 @@ template <class T>
 void DynamicArray<T>::insertByPosition(size_t index, T item) throw (std::invalid_argument)
 {		
     if(eltsInUse == capacity)
-    resize();
+	resize();
 
     size_t position;
     if((index>0) && (index <= eltsInUse))
     {
 	for(position = eltsInUse; position >= index; position--)
-	data[position] = data[position-1];
+	    data[position] = data[position-1];
 
 	data[index] = item;
 	eltsInUse++;
 	return;
     }
-    else
+    else if (index >= 0 && index <= eltsInUse)
     {	  
 	if(eltsInUse > 0)
-	for(position = eltsInUse; position > 0; position--)
-	{
-     data[position] = data[position - 1];
- }
+	    for(position = eltsInUse; position > 0; position--)
+		data[position] = data[position - 1];
 
 	data[0] = item;
 	eltsInUse++;
 	return;
     }
-
-    throw std::invalid_argument("Invalid index!");	
+    throw std::invalid_argument("Invalid Index: " + std::to_string(index));	
 }
 
 template <class T>	
 void DynamicArray<T>::insertByValue(T item) 
 {
-    size_t index = 0;
-    if(eltsInUse > 0)
-    index = binarySearch(0, eltsInUse -1, item);
+  size_t index = eltsInUse;
+  bool done = false;
 
-    std::cout << "DEBUG: index = " << index << std::endl; 
+  insertEnd(item);
 
-    insertByPosition(index, item);
+  while( (index > 0) && (!done) )
+    {
+      done = data[index-1] <= data[index];
+      if(!done)
+	{
+	  swap(index-1, index);
+	}
+	    index--;
+    }
 }
+
 
 template <class T>
 void DynamicArray<T>::getFront(T &item) const
@@ -170,7 +173,7 @@ template <class T>
 void DynamicArray<T>::removeFront()
 {
     for(size_t i = 0; i < eltsInUse; i++)
-    data[i] = data[i + 1];
+	data[i] = data[i + 1];
     eltsInUse--;
 }
 
@@ -197,10 +200,16 @@ void DynamicArray<T>::removeAll()
 }
 
 template <class T>
+void DynamicArray<T>::swap(size_t index1, size_t index2)
+{
+    T temp = data[index1];
+    data[index1] = data[index2];
+    data[index2] = temp;
+}
+
+template <class T>
 void DynamicArray<T>::resize()
 {
-    //	std::cout << "DEBUG: resizing\n";
-
     capacity = capacity * 1.5;
 
     T *newData = new T[capacity];
@@ -210,24 +219,3 @@ void DynamicArray<T>::resize()
     delete[] data;
     data = newData;
 }
-
-/* broken... */
-template <class T>
-size_t DynamicArray<T>::binarySearch(size_t first, size_t last, const T &key)
-{
-    size_t index;
-    if(first > last)
-    index = -1;
-    else {
-	int mid = first + (last - first) / 2;
-	index = mid;
-	if(key == data[mid])
-	index = mid;
-	else if(key < data[mid])
-	index = binarySearch(first, mid -1, key);
-	else
-	index = binarySearch(mid + 1, last, key);
-      }
-    return index;
-}
-

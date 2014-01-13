@@ -48,14 +48,15 @@ int main()
     dyn3.print(cout);
 
     DynamicArray<int> dyn4;
-    cout << "Testing insertByValue() 9, 3, 1, 7, 45, 300, 2, 2\n";
-    dyn4.insertByValue(9);
+    cout << "Testing insertByValue() 3, 4, 1, 5, 2\n";
     dyn4.insertByValue(3);
+    dyn4.print();
+    dyn4.insertByValue(4);
+    dyn4.print();
     dyn4.insertByValue(1);
-    dyn4.insertByValue(7);
-    dyn4.insertByValue(45);
-    dyn4.insertByValue(300);
-    dyn4.insertByValue(2);
+    dyn4.print();
+    dyn4.insertByValue(5);
+    dyn4.print();
     dyn4.insertByValue(2);
     dyn4.print();
 
