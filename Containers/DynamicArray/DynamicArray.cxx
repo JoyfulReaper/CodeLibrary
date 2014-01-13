@@ -174,7 +174,6 @@ void DynamicArray<T>::getByPosition(size_t index, T &item) const throw(std::out_
     if(index > eltsInUse -1)
 	throw std::out_of_range("Invalid index");
     
-    std::cout << "DEBUG: index: " << index << std::endl;
     item = data[index];
 }
 

@@ -72,7 +72,7 @@ int main()
     dyn4.print();
     int position;
     dyn4.getByPosition(2, position);
-    cout << "Testing getByPosition(2): " << back << std::endl;
+    cout << "Testing getByPosition(2): " << position << std::endl;
     
     
 
