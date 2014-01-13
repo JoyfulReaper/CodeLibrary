@@ -59,6 +59,22 @@ int main()
     dyn4.print();
     dyn4.insertByValue(2);
     dyn4.print();
+    cout << "Testing numberOfItems(): " << dyn4.numberOfItems() << std::endl;
+    cout << "Testing insertByPosition(2, 99): ";
+    dyn4.insertByPosition(2, 99);
+    dyn4.print();
+    int front;
+    dyn4.getFront(front);
+    cout << "Testing getFront(): " << front << std::endl;
+    int back;
+    dyn4.getEnd(back);
+    cout << "Testing getEnd(): " << back << std::endl;
+    dyn4.print();
+    int position;
+    dyn4.getByPosition(2, position);
+    cout << "Testing getByPosition(2): " << back << std::endl;
+    
+    
 
     return 0;
 }

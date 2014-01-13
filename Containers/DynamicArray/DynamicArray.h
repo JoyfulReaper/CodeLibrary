@@ -61,9 +61,13 @@ public:
      *	@param index The index in the container at which to insert the item
      *	@param item The item to insert into the container 
      */
-    
     void insertByPosition(size_t index, T item) throw(std::invalid_argument);
     
+    /**
+     * Inserts items in ascending order
+     * @pre Array is sorted in ascending order
+     * @param anItem The item to insert
+     */
     void insertByValue(T anItem);
     
     /**
@@ -109,9 +113,13 @@ public:
      *	@pre The container is not empty and index is a valid index
      *	@post The item at the specified index of the container has been removed
      */
-    void removeByPosition(size_t position);
+    void removeByPosition(size_t position) throw(std::invalid_argument);
     
-    void removeByValue(T item);
+    /**
+     * @param item The item to remove from the container
+     * @return true if the item was removed; false otherwise
+     */
+    bool removeByValue(T item); 
     
     /**
      *	Removes all of the items from the container
@@ -124,7 +132,7 @@ public:
      * Swap the elements in index1 and index2
      * @pre index1 and index2 are valid indexes
      */
-    void swap(size_t index1, size_t index2);
+    void swap(size_t index1, size_t index2) throw(std::out_of_range);
     
 private:
     size_t capacity;

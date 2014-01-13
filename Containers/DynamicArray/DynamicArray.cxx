@@ -173,6 +173,8 @@ void DynamicArray<T>::getByPosition(size_t index, T &item) const throw(std::out_
 {
     if(index > eltsInUse -1)
 	throw std::out_of_range("Invalid index");
+    
+    std::cout << "DEBUG: index: " << index << std::endl;
     item = data[index];
 }
 
@@ -197,13 +199,43 @@ void DynamicArray<T>::removeEnd() throw(std::out_of_range)
 }
 
 template <class T>
-void DynamicArray<T>::removeByPosition(size_t position)
+void DynamicArray<T>::removeByPosition(size_t index) throw(std::invalid_argument)
 {
+  size_t position;
+
+  if((index > 0) && (index < eltsInUse) )
+    {
+      for(position = index; position < eltsInUse; position++)
+	data[position] = data[position + 1];
+    }
+   else
+       throw std::out_of_range("Invalid index");
+   
+  eltsInUse--;
 }
 
 template <class T>
-void DynamicArray<T>::removeByValue(T item)
+bool DynamicArray<T>::removeByValue(T item)
 {
+  size_t index;
+  size_t position = 0;
+  bool found = false;
+
+  while (position < eltsInUse && !found)
+    {
+      found = data[position] == item;
+      if(!found)
+	position++;
+    }
+
+  if(found)
+    {
+      for(index = position; index < eltsInUse; index++)
+	data[index] = data[index + 1];
+
+      eltsInUse--;
+    }
+    return found;
 }
 
 template <class T>
@@ -213,8 +245,11 @@ void DynamicArray<T>::removeAll()
 }
 
 template <class T>
-void DynamicArray<T>::swap(size_t index1, size_t index2)
+void DynamicArray<T>::swap(size_t index1, size_t index2) throw(std::out_of_range)
 {
+    if((index1 > eltsInUse -1) || (index2 > eltsInUse -1))
+	throw std::out_of_range("Invalid index");
+    
     T temp = data[index1];
     data[index1] = data[index2];
     data[index2] = temp;
