@@ -89,7 +89,11 @@ class IContainer
 		*/
 		virtual void removeByPosition(size_t position) = 0;
 		
-		virtual void removeByValue(T item) = 0;
+		/**
+		* @param item The item to remove from the container
+		* @return true if the item was removed; false otherwise
+		*/
+		virtual bool removeByValue(T item) = 0;
 		
 		/**
 			Removes all of the items from the container

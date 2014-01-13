@@ -73,6 +73,17 @@ int main()
     int position;
     dyn4.getByPosition(2, position);
     cout << "Testing getByPosition(2): " << position << std::endl;
+    dyn4.removeFront();
+    cout << "Testing removeFront(): " << "\n" << dyn4;
+    dyn4.removeEnd();
+    cout << "Testing removeEnd(): " << "\n" << dyn4;
+    dyn4.removeByPosition(2);
+    cout << "Testing removeByPosition(2): " << "\n" << dyn4;
+    dyn4.removeByValue(99);
+    cout << "Testing removeByValue(99): " << "\n" << dyn4;
+    dyn4.removeAll();
+    cout << "Testing removeAll(): " << "\n" << dyn4;
+    
     
     
 

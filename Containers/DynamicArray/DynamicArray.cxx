@@ -266,3 +266,22 @@ void DynamicArray<T>::resize()
     delete[] data;
     data = newData;
 }
+
+/************************ NONMEMBER METHODS ************************************/
+
+template <class T>
+std::ostream &operator<<(std::ostream &outStream, const DynamicArray<T> &arr)
+{
+  arr.print(outStream, ' ');
+  return outStream;
+}
+
+template <class T>
+std::istream &operator>>(std::istream &inStream, DynamicArray<T> &arr)
+{
+  T newDataItem;
+  inStream >> newDataItem;
+  arr.insertEnd(newDataItem);
+
+  return inStream;
+}
