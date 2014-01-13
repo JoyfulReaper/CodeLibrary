@@ -72,7 +72,7 @@ public:
      *	@post item contains the item from the front of the container
      *	@param item Will hold the item from the front of the container
      */
-    void getFront(T &item) const;
+    void getFront(T &item) const throw(std::out_of_range);
     
     /**
      *	Gets the item at the back of the container
@@ -80,7 +80,7 @@ public:
      *	@post item contains the item from the back of the container
      *	@param item Will hold the item from the front of the container
      */
-    void getEnd(T &item) const;
+    void getEnd(T &item) const throw(std::out_of_range);
     
     /**
      *	Gets the item at the specified index
@@ -88,21 +88,21 @@ public:
      *	@post item contains the item from the specified index of the container
      *	@param item Will hold the item from the front of the container
      */
-    void getByPosition(size_t index, T &item) const;
+    void getByPosition(size_t index, T &item) const throw(std::out_of_range);
     
     /**
      *	Removes the item at the front of the container
      *	@pre The container is not empty
      *	@post The item at the front of the container has been removed
      */
-    void removeFront();
+    void removeFront() throw(std::out_of_range);
     
     /**
      *	Removes the item at the back of the container
      *	@pre The container is not empty
      *	@post The item at the back of the container has been removed
      */
-    void removeEnd();
+    void removeEnd() throw(std::out_of_range);
     
     /**
      *	Removes the item at the specified index of the container

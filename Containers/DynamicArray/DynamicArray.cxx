@@ -30,8 +30,9 @@ DynamicArray<T>::DynamicArray(const DynamicArray &original)
 	data = new T[capacity];
 	for(size_t i = 0; i < eltsInUse; i++)
 	data[i] = original.data[i];
-    } else 
-    data = nullptr;
+    } 
+    else 
+	data = nullptr;
 }
 
 template <class T>
@@ -152,34 +153,46 @@ void DynamicArray<T>::insertByValue(T item)
 
 
 template <class T>
-void DynamicArray<T>::getFront(T &item) const
+void DynamicArray<T>::getFront(T &item) const throw(std::out_of_range)
 {
+    if(isEmpty())
+	throw std::out_of_range("Invalid index");
     item = data[0];
 }
 
 template <class T>
-void DynamicArray<T>::getEnd(T &item) const
+void DynamicArray<T>::getEnd(T &item) const throw(std::out_of_range)
 {
+    if(isEmpty())
+	throw std::out_of_range("Invalid index");
     item = data[eltsInUse -1];
 }
 
 template <class T>
-void DynamicArray<T>::getByPosition(size_t index, T &item) const
+void DynamicArray<T>::getByPosition(size_t index, T &item) const throw(std::out_of_range)
 {
+    if(index > eltsInUse -1)
+	throw std::out_of_range("Invalid index");
     item = data[index];
 }
 
 template <class T>
-void DynamicArray<T>::removeFront()
+void DynamicArray<T>::removeFront() throw(std::out_of_range)
 {
+    if(isEmpty())
+	throw std::out_of_range("Invalid index");
+    
     for(size_t i = 0; i < eltsInUse; i++)
 	data[i] = data[i + 1];
     eltsInUse--;
 }
 
 template <class T>
-void DynamicArray<T>::removeEnd()
+void DynamicArray<T>::removeEnd() throw(std::out_of_range)
 {
+    if(isEmpty())
+	throw std::out_of_range("Invalid index");
+    
     eltsInUse--;
 }
 
