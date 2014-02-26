@@ -59,6 +59,15 @@ DynamicArray<T> DynamicArray<T>::operator=(DynamicArray<T> rhs)
     return (*this);
 }
 
+template <class T>
+T &DynamicArray<T>::operator[](size_t i)
+{
+	//TODO: Do something smarter than this...
+	if (i > eltsInUse)
+		exit(EXIT_FAILURE);
+		
+	return data[i];
+}
 /**********************************************************************/
 
 template <class T>

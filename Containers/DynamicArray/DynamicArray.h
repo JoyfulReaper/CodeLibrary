@@ -26,6 +26,11 @@ public:
     DynamicArray operator=(DynamicArray rhs);
     
     /**
+    * Returns null if index is out of bounds
+    */
+    T &operator[](size_t index);
+    
+    /**
      *Prints out the contents of the array
      *@pre none
      *@param out The stream to print to

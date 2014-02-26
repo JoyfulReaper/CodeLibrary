@@ -84,8 +84,13 @@ int main()
     dyn4.removeAll();
     cout << "Testing removeAll(): " << "\n" << dyn4;
     
+    DynamicArray<int> test;
+    test.insertEnd(5);
+    test.insertEnd(4);
+    test.insertEnd(3);
+    test.insertEnd(2);
     
-    
-
+    cout << "Testing overloaded operators: " << test << std::endl;
+	cout << "Testing test[1]: " << test[1] << endl;
     return 0;
 }
