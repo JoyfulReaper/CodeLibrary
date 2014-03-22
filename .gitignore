@@ -1,5 +1,6 @@
 docs/*
 .kateproject.d/*
+*~
 
 # Compiled Object files
 *.slo
