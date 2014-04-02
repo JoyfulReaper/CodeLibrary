@@ -91,6 +91,10 @@ int main()
     test.insertEnd(2);
     
     cout << "Testing overloaded operators: " << test << std::endl;
-	cout << "Testing test[1]: " << test[1] << endl;
+    cout << "Testing test[1]: " << test[1] << endl;
+    cout << "Testing test[1] = 300: " << endl;
+    test[1]=300;
+    cout << "Testing test[1]: " << test[1] << endl;
+   
     return 0;
 }

@@ -44,29 +44,42 @@ DynamicArray<T>::~DynamicArray()
 /************************ OPERATORS ************************************/
 
 template <class T>
-DynamicArray<T> DynamicArray<T>::operator=(DynamicArray<T> rhs)
+DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T> &rhs)
 {
-    capacity = rhs.capacity;
-    eltsInUse = rhs.eltsInUse;
-    if (data != nullptr)
-	delete[] data;
+    if (this != &rhs)
+    {
+	capacity = rhs.capacity;
+	eltsInUse = rhs.eltsInUse;
+	if (data != nullptr)
+	    delete[] data;
 
-    data = new T[capacity];
-    if (eltsInUse != 0)
-	for (size_t i = 0; i < eltsInUse; i++)
-	    data[i] = rhs.data[i];
-
-    return (*this);
+	data = new T[capacity];
+	if (eltsInUse != 0)
+	    for (size_t i = 0; i < eltsInUse; i++)
+		data[i] = rhs.data[i];
+    }
+	return (*this);
 }
 
 template <class T>
-T &DynamicArray<T>::operator[](size_t i)
+T &DynamicArray<T>::operator[](size_t i) throw(std::out_of_range)
 {
 	//TODO: Do something smarter than this...
 	if (i > eltsInUse)
 		exit(EXIT_FAILURE);
 		
+
 	return data[i];
+}
+
+template <class T>
+const T& DynamicArray<T>::operator[](size_t i) const throw(std::out_of_range)
+{
+    //TODO: Do something smarter than this...
+    if (i > eltsInUse)
+		exit(EXIT_FAILURE);
+	
+    return data[i];
 }
 /**********************************************************************/
 

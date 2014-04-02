@@ -23,12 +23,10 @@ public:
     
     ~DynamicArray();
     
-    DynamicArray operator=(DynamicArray rhs);
+    DynamicArray& operator=(const DynamicArray &rhs);
     
-    /**
-    * Returns null if index is out of bounds
-    */
-    T &operator[](size_t index);
+    T &operator[](size_t index) throw(std::out_of_range);
+    const T& operator[](size_t index) const throw(std::out_of_range);
     
     /**
      *Prints out the contents of the array
