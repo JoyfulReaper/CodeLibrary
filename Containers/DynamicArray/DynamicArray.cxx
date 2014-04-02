@@ -29,7 +29,7 @@ DynamicArray<T>::DynamicArray(const DynamicArray &original)
     {
 	data = new T[capacity];
 	for(size_t i = 0; i < eltsInUse; i++)
-	data[i] = original.data[i];
+	    data[i] = original.data[i];
     } 
     else 
 	data = nullptr;

@@ -28,6 +28,11 @@ public:
     T &operator[](size_t index) throw(std::out_of_range);
     const T& operator[](size_t index) const throw(std::out_of_range);
     
+    typedef T* iterator;
+    typedef const T* const_iterator;
+    iterator begin() { return &data[0]; }
+    iterator end() { return &data[eltsInUse]; }
+    
     /**
      *Prints out the contents of the array
      *@pre none

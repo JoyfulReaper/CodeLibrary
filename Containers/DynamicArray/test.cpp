@@ -5,9 +5,15 @@ Test program for DynamicArray ADT
  */
 
 #include <iostream>
+#include <algorithm>
 #include "DynamicArray.h"
 
 using namespace std;
+
+void testForEach(int item)
+{
+    cout << "testForEach(): " << item << endl;
+}
 
 int main()
 {
@@ -94,12 +100,15 @@ int main()
     cout << "Testing test[1]: " << test[1] << endl;
     cout << "Testing test[1] = 300: " << endl;
     test[1]=300;
-    cout << "Testing test[1]: " << test[1] << endl;
+    cout << "Test: " << test << endl;
    
     if(dyn3 == dyn2)
 	cout << "Equal operator passed\n";
     else
 	cout << "Equal operator failed\n";
+    
+    cout << "\nTesting for_each: " << dyn3;
+    for_each(dyn3.begin(), dyn3.end(), testForEach);
     
     return 0;
 }
