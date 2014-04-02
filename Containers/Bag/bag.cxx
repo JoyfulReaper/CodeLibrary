@@ -6,44 +6,60 @@
  */
 
 #include <stdexcept>
+#include <algorithm>
 
 template <class T>
 Bag<T>::Bag()
 {
+    itemCount = 0;
+    data = new DynamicArray<T>;
 }
 
 template<class T>
 Bag<T>::Bag(size_t init_size)
 {
+    itemCount = 0;
+    data = new DynamicArray<T>(init_size);
+}
+
+template<class T>
+Bag<T>::~Bag()
+{
+    delete data;
 }
 
 template <class T>
-size_t Bag<T>::getSize() const
+inline size_t Bag<T>::getSize() const
 {
-    return 0;
+    return itemCount;
 }
 
 template <class T>
-bool Bag<T>::isEmpty() const
+inline bool Bag<T>::isEmpty() const
 {
-    return true;
+    return (!itemCount);
 }
 
 template <class T>
 bool Bag<T>::add(const T& item)
 {
-    return false;
+    data->insertEnd(item);
+    itemCount++;
+    
+    return true;
 }
 
 template <class T>
 bool Bag<T>::remove(const T& item)
 {
-    return false;
+    return data->removeByValue(item);
 }
+
 
 template <class T>
 void Bag<T>::clear()
 {
+    data->removeAll();
 }
 
 template <class T>

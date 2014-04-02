@@ -19,9 +19,12 @@ class Bag : public BagInterface<T>
 public:
     Bag();
     Bag(size_t init_size); //Initial size for array
+    //Bag(const T& org);
     
-    size_t getSize() const;
-    bool isEmpty() const;
+    ~Bag();
+    
+    inline size_t getSize() const;
+    inline bool isEmpty() const;
     bool add(const T& item);
     bool remove(const T& item);
     void clear();
@@ -31,6 +34,7 @@ public:
     
 private:
    size_t itemCount; // Number of items in bag
+   DynamicArray<T> *data = nullptr;
    
    // Get index of item
    size_t getIndexOf(const T& item) const throw(std::out_of_range);

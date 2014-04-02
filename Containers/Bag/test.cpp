@@ -13,5 +13,7 @@ int main()
 {
     Bag<int> mBag;
     
+    cout << "size: " << mBag.getSize() << endl;
+    
     return 0;
 }
