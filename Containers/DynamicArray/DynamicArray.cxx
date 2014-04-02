@@ -64,9 +64,8 @@ DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T> &rhs)
 template <class T>
 T &DynamicArray<T>::operator[](size_t i) throw(std::out_of_range)
 {
-	//TODO: Do something smarter than this...
 	if (i > eltsInUse)
-		exit(EXIT_FAILURE);
+		throw std::out_of_range("Invalid index");
 		
 
 	return data[i];
@@ -75,9 +74,8 @@ T &DynamicArray<T>::operator[](size_t i) throw(std::out_of_range)
 template <class T>
 const T& DynamicArray<T>::operator[](size_t i) const throw(std::out_of_range)
 {
-    //TODO: Do something smarter than this...
     if (i > eltsInUse)
-		exit(EXIT_FAILURE);
+		throw std::out_of_range("Invalid index");
 	
     return data[i];
 }

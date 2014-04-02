@@ -96,5 +96,10 @@ int main()
     test[1]=300;
     cout << "Testing test[1]: " << test[1] << endl;
    
+    if(dyn3 == dyn2)
+	cout << "Equal operator passed\n";
+    else
+	cout << "Equal operator failed\n";
+    
     return 0;
 }

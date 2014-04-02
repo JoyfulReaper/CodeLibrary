@@ -145,5 +145,21 @@ private:
     void resize();
 };
 
+template<class T>
+inline bool operator==(const T& lhs, const T& rhs)
+{   
+   if (lhs.numberOfItems() != rhs.numberOfItems())
+       return false;
+    
+    for (size_t i = 0; i < lhs.numberOfItems(); i++)
+	if(lhs[i] != rhs[i])
+	    return false;
+	
+    return true;
+}
+
+template<class T>
+inline bool operator!=(const T&lhs, const T& rhs) {return !operator==(lhs,rhs);}
+
 #include "DynamicArray.cxx"
 #endif

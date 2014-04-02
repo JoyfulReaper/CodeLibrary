@@ -5,10 +5,10 @@ CFLAGS = -c -Wall -std=c++11 -ggdb
 
 all: test
 
-test: test.o DynamicArray.cxx
+test: test.o
 	$(CC) test.o -o test
 
-test.o: test.cpp DynamicArray.cxx
+test.o: test.cpp DynamicArray.cxx DynamicArray.h
 	$(CC) $(CFLAGS) test.cpp 
 	
 clean:
