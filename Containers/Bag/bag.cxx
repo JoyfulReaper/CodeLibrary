@@ -5,9 +5,9 @@
  * A Dynmaic Array Based Bag ADT
  */
 
-#include <stdexcept>
 #include <algorithm>
 
+/*************************** CONSTRUCTORS **************************/
 template <class T>
 Bag<T>::Bag()
 {
@@ -23,10 +23,55 @@ Bag<T>::Bag(size_t init_size)
 }
 
 template<class T>
+Bag<T>::Bag(const Bag &org)
+{
+    itemCount = org.itemCount;
+    
+    if(org.data != nullptr)
+    {
+	data = new DynamicArray<T>(itemCount);
+    
+	for(size_t i = 0; i < itemCount; i++)
+	{
+	    T item;
+	    org.data->getByPosition(i, item);
+	    data->insertByPosition(i, item);
+	}
+    }
+    else
+	data = nullptr;
+}
+
+template<class T>
 Bag<T>::~Bag()
 {
     delete data;
 }
+
+/*********************************************************************/
+
+template <class T>
+Bag<T>& Bag<T>::operator=(const Bag<T> &rhs)
+{
+    if(this != &rhs)
+    {
+	itemCount = rhs.itemCount;
+	if (data != nullptr)
+	    delete data;
+	
+	data = new DynamicArray<T>(rhs.data->numberOfItems());
+	
+	for(size_t i = 0; i < itemCount; i++)
+	{
+	    T item;
+	    rhs.data->getByPosition(i, item);
+	    data->insertByPosition(i, item);
+	}
+    }
+    return (*this);
+}
+
+/*********************************************************************/
 
 template <class T>
 inline size_t Bag<T>::getSize() const
@@ -52,7 +97,11 @@ bool Bag<T>::add(const T& item)
 template <class T>
 bool Bag<T>::remove(const T& item)
 {
-    return data->removeByValue(item);
+    bool ret = data->removeByValue(item);
+    if(ret)
+	itemCount--;
+    
+    return ret;
 }
 
 
@@ -60,6 +109,7 @@ template <class T>
 void Bag<T>::clear()
 {
     data->removeAll();
+    itemCount = 0;
 }
 
 template <class T>
@@ -81,8 +131,17 @@ std::vector<T> Bag<T>::toVector() const
     return v;
 }
 
+/*********************************************************************/
+
 template <class T>
-size_t Bag<T>::getIndexOf(const T& item) const throw(std::out_of_range)
+void Bag<T>::print(std::ostream &out, char delim) const
 {
-    return 0;
+    data->print(out, delim);
+}
+
+template <class T>
+std::ostream &operator<<(std::ostream &out, const Bag<T> &bag)
+{
+    bag.print(out, ' ');
+    return out;
 }

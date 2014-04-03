@@ -8,8 +8,6 @@
 #ifndef _BAG_H__
 #define _BAG_H__
 
-#include <stdexcept>
-
 #include "IBag.h"
 #include "../DynamicArray/DynamicArray.h"
 
@@ -19,7 +17,7 @@ class Bag : public BagInterface<T>
 public:
     Bag();
     Bag(size_t init_size); //Initial size for array
-    //Bag(const T& org);
+    Bag(const Bag &org);
     
     ~Bag();
     
@@ -31,13 +29,13 @@ public:
     bool contains(const T& item) const;
     size_t getFrequency(const T& item) const;
     std::vector<T> toVector() const;
+    void print(std::ostream &out, char delim) const;
+    void print() const { print(std::cout, ' '); }
     
+    Bag& operator=(const Bag &rhs);
 private:
    size_t itemCount; // Number of items in bag
    DynamicArray<T> *data = nullptr;
-   
-   // Get index of item
-   size_t getIndexOf(const T& item) const throw(std::out_of_range);
 };
 
 #include "bag.cxx"
