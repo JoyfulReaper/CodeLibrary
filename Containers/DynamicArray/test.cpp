@@ -101,5 +101,10 @@ int main()
     else
 	cout << "Equal operator failed\n";
     
+    if(dyn3 != test)
+	cout << "NotEqual operator passed\n";
+    else
+	cout << "NotEqual operator failed\n";
+    
     return 0;
 }

@@ -62,7 +62,6 @@ DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T> &rhs)
 template<class T>
 bool DynamicArray<T>::operator==(const DynamicArray<T> &other) const
 {   
-    // TODO: Test
    if (numberOfItems() != other.numberOfItems())
        return false;
     
@@ -76,7 +75,6 @@ bool DynamicArray<T>::operator==(const DynamicArray<T> &other) const
 template<class T>
 bool DynamicArray<T>::operator!=(const DynamicArray<T> &other) const
 {
-    // TODO: Test
     return !(*this == other);
 }
 

@@ -67,7 +67,7 @@ public:
      */
     virtual void getByPosition(size_t index, T &item) const = 0;
     
-    /**
+    /*********************************************************************
      * Removes the item at the front of the container
      * @pre The container is not empty
      * @post The item at the front of the container has been removed
