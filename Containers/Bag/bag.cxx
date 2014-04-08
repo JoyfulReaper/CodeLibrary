@@ -119,7 +119,7 @@ inline size_t Bag<T>::getSize() const
 template <class T>
 inline bool Bag<T>::isEmpty() const
 {
-    return (!itemCount);
+    return (itemCount == 0);
 }
 
 template <class T>

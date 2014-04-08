@@ -15,10 +15,9 @@ LinkedList<T>::LinkedList()
 }
 
 template <class T>
-LinkedList<T>::LinkedList(const LinkedList &orginal)
+LinkedList<T>::LinkedList(const LinkedList &original)
 {
-    // TODO
-    numberOfNodes = orginal.numberOfNodes;
+	copy(original);
 }
 
 template <class T>
@@ -32,9 +31,12 @@ LinkedList<T>::~LinkedList()
 template <class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList &rhs)
 {
-    // TODO
+    copy(rhs);
+
     return (*this);
 }
+
+/*******************************************************************/
 
 template <class T>
 void LinkedList<T>::print(std::ostream &out, char del) const
@@ -60,7 +62,7 @@ void LinkedList<T>::print(std::ostream &out, char del) const
 template <class T>
 bool LinkedList<T>::isEmpty() const
 {
-    return (!numberOfNodes);
+    return (numberOfNodes == 0);
 }
 
 template <class T>
@@ -148,7 +150,30 @@ void LinkedList<T>::removeFront()
 template <class T>
 void LinkedList<T>::removeEnd()
 {
-    //TODO
+    node *current = head;
+    node *previous= nullptr;
+    node *deleteNode;
+    
+    if(head != nullptr)
+    {
+	while(current->next != nullptr)
+	{
+	    previous = current;
+	    current = current->next;
+	}
+	if(current == head)
+	{
+	    deleteNode = head;
+	    head = nullptr;
+	}
+	else
+	{
+	    previous->next = nullptr;
+	    deleteNode = current;
+	}
+	delete deleteNode;
+	numberOfNodes--;
+    }
 }
 
 
@@ -176,6 +201,26 @@ void LinkedList<T>::removeAll()
 /*******************************************************************/
 
 template <class T>
+void LinkedList<T>::copy(const LinkedList<T> &org)
+{
+    if(this != &org)
+    {
+	removeAll();
+	head = nullptr;
+	tail = nullptr;
+	
+	node *current = org.head;
+	while(current != nullptr)
+	{
+	    insertEnd(current->data);
+	    current = current->next;
+	}
+    }
+}
+
+/*******************************************************************/
+
+template <class T>
 std::ostream& operator<<(std::ostream &out, const LinkedList<T> &list)
 {
     list.print(out, ' ');
@@ -185,5 +230,6 @@ std::ostream& operator<<(std::ostream &out, const LinkedList<T> &list)
 template <class T>
 std::istream& operator>>(std::istream &in, LinkedList<T> &list)
 {
+    // TODO
     return in;
 }

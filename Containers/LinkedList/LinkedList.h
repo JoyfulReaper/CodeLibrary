@@ -22,6 +22,11 @@ public:
     
     void print(std::ostream &out, char del = ' ') const;
     
+    /**
+     * Copy list to this object.
+     * @param original The list to copy
+     */
+    void copy(const LinkedList<T> &orginal);
     /*******************************************************************/
     
     /** @return True if list is empty; false otherwise */
@@ -123,6 +128,7 @@ private:
 	};
     };
     
+
     node *head;
     node *tail;
     size_t numberOfNodes;
