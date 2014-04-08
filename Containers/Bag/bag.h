@@ -69,7 +69,7 @@ public:
      */
     std::vector<T> toVector() const;
     
-    void print(std::ostream &out, char delim) const;
+    void print(std::ostream &out, char delim = ' ') const;
     void print() const { print(std::cout, ' '); }
     
 private:
