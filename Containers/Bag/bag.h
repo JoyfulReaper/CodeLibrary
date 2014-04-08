@@ -20,6 +20,10 @@ public:
     ~Bag();
     
     Bag& operator=(const Bag &rhs);
+    bool operator==(const Bag &other) const;
+    bool operator!=(const Bag &other) const;
+    Bag& operator+=(const T &rhs);
+    Bag& operator-=(const T &rhs);
     
      /**
      * @return number of items in the bag

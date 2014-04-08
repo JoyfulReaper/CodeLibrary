@@ -42,7 +42,7 @@ Bag<T>::~Bag()
     delete data;
 }
 
-/*********************************************************************/
+/************************** OPERATORS ******************************/
 
 template <class T>
 Bag<T>& Bag<T>::operator=(const Bag<T> &rhs)
@@ -65,6 +65,45 @@ Bag<T>& Bag<T>::operator=(const Bag<T> &rhs)
     return (*this);
 }
 
+template <class T>
+bool Bag<T>::operator==(const Bag &other) const
+{
+    // TODO: Test
+    if(itemCount != other.itemCount)
+	return false;
+    
+    auto oit = other.begin();
+    for(auto it = data->begin(); it != data->end(); ++it)
+    {
+	if (*it != *oit)
+	    return false;
+	++oit;
+    }
+    return true;
+}
+
+template <class T>
+bool Bag<T>::operator!=(const Bag &other) const
+{
+    // TODO: Test
+    return !(*this == other);
+}
+
+template <class T>
+Bag<T>& Bag<T>::operator+=(const T &rhs)
+{
+    // TODO: Test
+    add(rhs);
+    return *this;
+}
+
+template <class T>
+Bag<T>& Bag<T>::operator-=(const T &rhs)
+{
+    // TODO: Test
+    remove(rhs);
+    return *this;
+}
 /*********************************************************************/
 
 template <class T>
