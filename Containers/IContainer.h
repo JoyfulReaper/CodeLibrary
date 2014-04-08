@@ -1,7 +1,7 @@
 /**
- *	Interface for container data structures
- *	@file IContainer.h
- *	@author Kyle Givler
+ * Interface for container data structures
+ * @file IContainer.h
+ * @author Kyle Givler
  */
 
 #ifndef _ICONTAINER_H_

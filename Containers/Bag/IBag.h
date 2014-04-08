@@ -1,4 +1,5 @@
 /**
+ * Interface for bag data structure
  * @file IBag.h
  * @author Kyle Givler
  */
@@ -12,6 +13,8 @@ template <class T>
 class BagInterface
 {
 public:
+    virtual ~BagInterface() {};
+    
     /**
      * @return number of items in the bag
      */
