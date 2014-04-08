@@ -22,12 +22,12 @@ int main()
     cout << "isEmpty(): " << list.isEmpty() << endl;
     cout << "numberOfItems(): " << list.numberOfItems() << endl;
     
-    cout << "The list contains: " << list;
+    cout << "The list contains: " << list << endl;
     cout << "Inserting at end: " << endl;
     list.insertEnd(4);
     list.insertEnd(5);
     list.insertEnd(6);
-    cout << "The list contains: " << list;
+    cout << "The list contains: " << list << endl;
     
     return 0;
 }

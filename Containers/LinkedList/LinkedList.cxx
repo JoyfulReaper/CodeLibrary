@@ -17,12 +17,14 @@ LinkedList<T>::LinkedList()
 template <class T>
 LinkedList<T>::LinkedList(const LinkedList &orginal)
 {
+    // TODO
     numberOfNodes = orginal.numberOfNodes;
 }
 
 template <class T>
 LinkedList<T>::~LinkedList()
 {
+    removeAll();
 }
 
 /*******************************************************************/
@@ -30,27 +32,27 @@ LinkedList<T>::~LinkedList()
 template <class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList &rhs)
 {
+    // TODO
     return (*this);
 }
 
 template <class T>
 void LinkedList<T>::print(std::ostream &out, char del) const
 {
-    node *current = head;
-    while(true)
+   node *current = head;
+    if (head == nullptr)
+	out << "(empty)";
+    else
     {
-	out << current->data;
-	current = current->next;
-	if (current == nullptr)
+	current = head;
+	while(current != nullptr)
 	{
-	    break;
-	}
-	else
-	{
-	    out << del;
+	    out << current->data;
+	    if(current->next != nullptr)
+		out << del;
+	    current = current->next;
 	}
     }
-    out << std::endl;
 }
 
 /*******************************************************************/
@@ -78,69 +80,97 @@ void LinkedList<T>::insertFront(T item)
 template <class T>
 void LinkedList<T>::insertEnd(T item)
 {
-    node *current;
-    
+    node *current = head;
     if (head == nullptr)
 	head = new node(item, nullptr);
     else
     {
-	current = head;
 	while(current->next != nullptr)
 	    current = current->next;
 	
 	current->next = new node(item, nullptr);
+	
     }
+    numberOfNodes++;
 }
 
 template <class T>
 void LinkedList<T>::insertByPosition(size_t index, T item)
 {
+    //TODO
 }
 
 template <class T>
 void LinkedList<T>::insertByValue(T anItem)
 {
+    //TODO
 }
 
 template <class T>
 void LinkedList<T>::getFront(T &item) const
 {
+    if(head != nullptr)
+    {
+	item = head->data;
+    }
 }
 
 template <class T>
 void LinkedList<T>::getEnd(T &item) const
 {
+    node *current = head;
+    if (head != nullptr)
+    {
+	while(current->next != nullptr)
+	    current = current->next;
+    }
+    item = current->data;
 }
 
 template <class T>
 void LinkedList<T>::getByPosition(size_t index, T &item) const
 {
+    //TODO
 }
 
 template <class T>
 void LinkedList<T>::removeFront()
 {
+    node *deleteNode = head;
+    if(head != nullptr)
+    {
+	head = head->next;
+	delete deleteNode;
+    }
+    numberOfNodes--;
 }
 
 template <class T>
 void LinkedList<T>::removeEnd()
 {
+    //TODO
 }
+
 
 template <class T>
 void LinkedList<T>::removeByPosition(size_t position)
 {
+    //TODO
 }
+
 
 template <class T>
 bool LinkedList<T>::removeByValue(T item)
 {
+    //TODO
     return false;
 }
 
 template <class T>
 void LinkedList<T>::removeAll()
 {
+    while(!isEmpty())
+	removeFront();
 }
 
 /*******************************************************************/
