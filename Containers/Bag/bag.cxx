@@ -8,12 +8,6 @@
 #include <algorithm>
 
 /*************************** CONSTRUCTORS **************************/
-template <class T>
-Bag<T>::Bag()
-{
-    itemCount = 0;
-    data = new DynamicArray<T>;
-}
 
 template<class T>
 Bag<T>::Bag(size_t init_size)
@@ -35,7 +29,7 @@ Bag<T>::Bag(const Bag &org)
 	{
 	    T item;
 	    org.data->getByPosition(i, item);
-	    data->insertByPosition(i, item);
+	    data->insertEnd(item);
 	}
     }
     else
@@ -65,7 +59,7 @@ Bag<T>& Bag<T>::operator=(const Bag<T> &rhs)
 	{
 	    T item;
 	    rhs.data->getByPosition(i, item);
-	    data->insertByPosition(i, item);
+	    data->insertEnd(item);
 	}
     }
     return (*this);
@@ -137,6 +131,7 @@ size_t Bag<T>::getFrequency(const T& item) const
 template <class T>
 std::vector<T> Bag<T>::toVector() const
 {
+    // TODO: Test
     std::vector<T> bagVector;
     for(auto it = data->begin(); it != data->end(); ++it)
 	bagVector.push_back(*it);

@@ -1,8 +1,9 @@
 #binaries
-DynamicArray/test
+Containers/DynamicArray/test
+Containers/Bag/test
+Containers/LinkedList/test
 
 docs/*
-.kateproject.d/*
 *~
 
 # Compiled Object files

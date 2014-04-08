@@ -41,7 +41,7 @@ public:
     
     /**
      * @param item item to be counted
-     * @return Th number of occurences
+     * @return The number of occurences
      */
     virtual size_t getFrequency(const T& item) const= 0;
     

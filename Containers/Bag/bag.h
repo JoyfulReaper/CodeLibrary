@@ -15,24 +15,62 @@ template<class T>
 class Bag : public BagInterface<T>
 {
 public:
-    Bag();
-    Bag(size_t init_size); //Initial size for array
+    Bag(size_t init_size = 10); //Initial size for array
     Bag(const Bag &org);
-    
     ~Bag();
     
+    Bag& operator=(const Bag &rhs);
+    
+     /**
+     * @return number of items in the bag
+     */
     inline size_t getSize() const;
+    
+     /**
+     * @return true if bag is empty, false otherwise
+     */
     inline bool isEmpty() const;
+    
+     /**
+     * @param item Item to be insert into bag
+     * @return true on sucess, false on failure
+     */
     bool add(const T& item);
+    
+     /**
+     * @param item item to remove from bag;
+     * @return true on sucess, false otherwise
+     */
     bool remove(const T& item);
+    
+     /**
+     * @post Bag contains no items
+     */
     void clear();
+    
+    
+     /**
+     * @param item The object to check for
+     * @return true if the bag contains it, false otherwise
+     */
     bool contains(const T& item) const;
+    
+     /**
+     * @param item item to be counted
+     * @return The number of occurences
+     */
     size_t getFrequency(const T& item) const;
+    
+     /**
+     * @return Vector containing all entries in bag
+     */
     std::vector<T> toVector() const;
+    
+    
     void print(std::ostream &out, char delim) const;
     void print() const { print(std::cout, ' '); }
     
-    Bag& operator=(const Bag &rhs);
+    
 private:
    size_t itemCount; // Number of items in bag
    DynamicArray<T> *data = nullptr;

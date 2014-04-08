@@ -1,8 +1,8 @@
 /**
-Test program for DynamicArray ADT
-@file test.cpp
-@author Kyle Givler
- */
+* Test program for Bag ADT
+* @file test.cpp
+* @author Kyle Givler
+*/
 
 #include <iostream>
 #include "bag.h"
@@ -44,5 +44,15 @@ int main()
     cout << "\nTesting contains(7): " << mBag2.contains(7) << endl;
     mBag2.contains(7);
     cout << mBag2;
+    
+    Bag<int> mBag4;
+    mBag4.add(1);
+    mBag4.add(2);
+    mBag4.add(3);
+    mBag4.add(4);
+    mBag4.add(2);
+    cout << "\nTesting getFrequency(2): " << mBag4.getFrequency(2) << endl;
+    cout << "Bag contains: " << mBag4 << endl;
+    
     return 0;
 }
