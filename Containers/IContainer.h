@@ -7,7 +7,7 @@
 #ifndef _ICONTAINER_H_
 #define _ICONTAINER_H_
 
-template<class T>
+template <class T>
 class IContainer
 {
 public:
@@ -16,7 +16,7 @@ public:
     /** @return True if list is empty; false otherwise */
     virtual bool isEmpty() const = 0;
     
-    /** @return The number of items in the container */
+    /** @return The number otems in the container */
     virtual size_t numberOfItems() const = 0;
     
     /** 
