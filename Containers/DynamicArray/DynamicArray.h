@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "DynamicArrayIterator.h"
 #include "../IContainer.h"
 
 template <class T>
@@ -35,11 +36,11 @@ public:
     T &operator[](size_t index) throw(std::out_of_range);
     const T& operator[](size_t index) const throw(std::out_of_range);
     
-    // Iterators
-    typedef T* iterator;
-    typedef const T* const_iterator;
-    iterator begin() { return &data[0]; }
-    iterator end() { return &data[eltsInUse]; }
+    DynamicArrayIterator<T> begin()
+    { return DynamicArrayIterator<T>(this, 0); }
+    
+    DynamicArrayIterator<T> end()
+    { return DynamicArrayIterator<T>(this, eltsInUse); }
     
     /**
      * Prints out the contents of the array
