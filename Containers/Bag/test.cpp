@@ -41,7 +41,7 @@ int main()
     cout << "\nTesting contains(3): " << mBag2.contains(3) << endl;
     mBag2.contains(3);
     cout << mBag2;
-    cout << "\nTesting contains(7): " << mBag2.contains(3) << endl;
+    cout << "\nTesting contains(7): " << mBag2.contains(7) << endl;
     mBag2.contains(7);
     cout << mBag2;
     return 0;

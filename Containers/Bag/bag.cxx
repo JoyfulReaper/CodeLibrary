@@ -115,20 +115,33 @@ void Bag<T>::clear()
 template <class T>
 bool Bag<T>::contains(const T& item) const
 {
+    for(auto it = data->begin(); it != data->end(); ++it)
+	if (*it == item)
+	    return true;
+    
     return false;
 }
 
 template <class T>
 size_t Bag<T>::getFrequency(const T& item) const
 {
-    return 0;
+    size_t count = 0;
+    
+    for(auto it = data->begin(); it != data->end(); ++it)
+	if (*it == item)
+	    count++;
+	
+    return count;
 }
 
 template <class T>
 std::vector<T> Bag<T>::toVector() const
 {
-    std::vector<T> v;
-    return v;
+    std::vector<T> bagVector;
+    for(auto it = data->begin(); it != data->end(); ++it)
+	bagVector.push_back(*it);
+ 
+    return bagVector;
 }
 
 /*********************************************************************/
