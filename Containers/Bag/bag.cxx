@@ -72,11 +72,10 @@ Bag<T>& Bag<T>::operator=(const Bag<T> &rhs)
 template <class T>
 bool Bag<T>::operator==(const Bag<T> &other) const
 {
-    // TODO: Test
     if(itemCount != other.itemCount)
 	return false;
     
-    auto oit = other.begin();
+    auto oit = other.data->begin();
     for(auto it = data->begin(); it != data->end(); ++it)
     {
 	if (*it != *oit)
@@ -89,7 +88,6 @@ bool Bag<T>::operator==(const Bag<T> &other) const
 template <class T>
 bool Bag<T>::operator!=(const Bag<T> &other) const
 {
-    // TODO: Test
     return !(*this == other);
 }
 

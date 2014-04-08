@@ -54,5 +54,9 @@ int main()
     cout << "\nTesting getFrequency(2): " << mBag4.getFrequency(2) << endl;
     cout << "Bag contains: " << mBag4 << endl;
     
+    Bag<int> test;
+    cout << "\nTesting == operator test==bag4: " << (test == mBag4) << endl;
+    cout << "Testing != operator test!=bag4: " << (test != mBag4) << endl;
+    
     return 0;
 }
