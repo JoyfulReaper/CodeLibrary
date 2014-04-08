@@ -8,6 +8,9 @@
 #ifndef _BAG_H__
 #define _BAG_H__
 
+#include <algorithm>
+#include <iostream>
+
 #include "IBag.h"
 #include "../DynamicArray/DynamicArray.h"
 
@@ -76,6 +79,9 @@ private:
    size_t itemCount; // Number of items in bag
    DynamicArray<T> *data = nullptr;
 };
+
+template <class T>
+std::ostream &operator<<(std::ostream &out, const Bag<T> &bag);
 
 #include "bag.cxx"
 #endif

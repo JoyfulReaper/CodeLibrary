@@ -7,22 +7,20 @@
 
 
 /* TODOs:
- * TODO: Testing of untesting methods
+ * TODO: Testing of untested methods
  * TODO: Add stream insertion operator
  */
 
-#include <algorithm>
-
 /*************************** CONSTRUCTORS **************************/
 
-template<class T>
+template <class T>
 Bag<T>::Bag(size_t init_size)
 {
     itemCount = 0;
     data = new DynamicArray<T>(init_size);
 }
 
-template<class T>
+template <class T>
 Bag<T>::Bag(const Bag<T> &org)
 {
     itemCount = org.itemCount;
@@ -42,7 +40,7 @@ Bag<T>::Bag(const Bag<T> &org)
 	data = nullptr;
 }
 
-template<class T>
+template <class T>
 Bag<T>::~Bag()
 {
     delete data;
