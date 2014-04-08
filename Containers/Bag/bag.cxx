@@ -5,6 +5,12 @@
  * A Dynmaic Array Based Bag ADT
  */
 
+
+/* TODOs:
+ * TODO: Testing of untesting methods
+ * TODO: Add stream insertion operator
+ */
+
 #include <algorithm>
 
 /*************************** CONSTRUCTORS **************************/
@@ -17,7 +23,7 @@ Bag<T>::Bag(size_t init_size)
 }
 
 template<class T>
-Bag<T>::Bag(const Bag &org)
+Bag<T>::Bag(const Bag<T> &org)
 {
     itemCount = org.itemCount;
     
@@ -66,7 +72,7 @@ Bag<T>& Bag<T>::operator=(const Bag<T> &rhs)
 }
 
 template <class T>
-bool Bag<T>::operator==(const Bag &other) const
+bool Bag<T>::operator==(const Bag<T> &other) const
 {
     // TODO: Test
     if(itemCount != other.itemCount)
@@ -83,7 +89,7 @@ bool Bag<T>::operator==(const Bag &other) const
 }
 
 template <class T>
-bool Bag<T>::operator!=(const Bag &other) const
+bool Bag<T>::operator!=(const Bag<T> &other) const
 {
     // TODO: Test
     return !(*this == other);
@@ -136,7 +142,6 @@ bool Bag<T>::remove(const T& item)
     
     return ret;
 }
-
 
 template <class T>
 void Bag<T>::clear()

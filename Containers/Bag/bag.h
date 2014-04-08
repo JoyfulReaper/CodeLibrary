@@ -16,24 +16,24 @@ class Bag : public BagInterface<T>
 {
 public:
     Bag(size_t init_size = 10); //Initial size for array
-    Bag(const Bag &org);
+    Bag(const Bag<T> &org);
     ~Bag();
     
-    Bag& operator=(const Bag &rhs);
-    bool operator==(const Bag &other) const;
-    bool operator!=(const Bag &other) const;
-    Bag& operator+=(const T &rhs);
-    Bag& operator-=(const T &rhs);
+    Bag<T>& operator=(const Bag<T> &rhs);
+    bool operator==(const Bag<T> &other) const;
+    bool operator!=(const Bag<T> &other) const;
+    Bag<T>& operator+=(const T &rhs);
+    Bag<T>& operator-=(const T &rhs);
     
      /**
      * @return number of items in the bag
      */
-    inline size_t getSize() const;
+     size_t getSize() const;
     
      /**
      * @return true if bag is empty, false otherwise
      */
-    inline bool isEmpty() const;
+    bool isEmpty() const;
     
      /**
      * @param item Item to be insert into bag
@@ -52,7 +52,6 @@ public:
      */
     void clear();
     
-    
      /**
      * @param item The object to check for
      * @return true if the bag contains it, false otherwise
@@ -70,10 +69,8 @@ public:
      */
     std::vector<T> toVector() const;
     
-    
     void print(std::ostream &out, char delim) const;
     void print() const { print(std::cout, ' '); }
-    
     
 private:
    size_t itemCount; // Number of items in bag
