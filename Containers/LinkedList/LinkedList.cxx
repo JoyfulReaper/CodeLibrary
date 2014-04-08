@@ -4,6 +4,12 @@
  * @author Kyle Givler
  */
 
+/*
+ * TODO: exceptions
+ * TODO: additional operators
+ * TODO: Iterators
+ */
+
 /*************************** CONSTRUCTORS **************************/
 
 template <class T>
@@ -99,7 +105,31 @@ void LinkedList<T>::insertEnd(T item)
 template <class T>
 void LinkedList<T>::insertByPosition(size_t index, T item)
 {
-    //TODO
+    node *current;
+    node *newNode;
+    
+    if( (index >=0) && (index <= numberOfNodes) )
+    {
+	if(index == 0)
+	    insertFront(item);
+	else if(index == numberOfNodes)
+	    insertEnd(item);
+	else
+	{
+	    current = head;
+	    for(size_t i = 1; i < index; i++)
+	    {
+		current = current->next;
+	    }
+	    if(current == nullptr)
+		insertEnd(item);
+	    else
+	    {
+		newNode = new node(item, current->next->next);
+		current->next = newNode;
+	    }
+	}
+    }
 }
 
 template <class T>

@@ -30,6 +30,16 @@ int main()
     list.insertEnd(6);
     cout << "The list contains: " << list << endl;
     
+    cout << "\nTesting insertByPosition(0,0): \n";
+    list.insertByPosition(0,0);
+    cout << "The list contains: " << list << endl;
+    cout << "\nTesting insertByPosition(7,77): \n";
+    list.insertByPosition(7,77);
+    cout << "The list contains: " << list << endl;
+    cout << "\nTesting insertByPosition(2,22): \n";
+    list.insertByPosition(2,22);
+    cout << "The list contains: " << list << endl;
+    
     cout << "\nTesting operator=(): " << endl;
     list2 = list;
     cout << "list1: " << list << endl;
