@@ -1,47 +1,54 @@
 /**
- *	@file DynamicArray.h
- *	@author Kyle Givler
+ * Dynamic Array ADT
+ * @file DynamicArray.h
+ * @author Kyle Givler
  */
 
 #ifndef _DYNAMIC_ARRAY_H_
 #define _DYNAMIC_ARRAY_H_
 
-#include "../IContainer.h"
+#include <iostream>
 #include <stdexcept>
+#include "../IContainer.h"
 
-template<class T>
+template <class T>
 class DynamicArray : public IContainer<T>
 {
 public:
     /**
-     *Capacity must be >= 1, if not it will be set to 1
+     * Capacity must be >= 1, if not it will be set to 1
      *@param capacity Initial capacity of the array
      */
     DynamicArray(size_t capacity = 10);
-    
-    DynamicArray(const DynamicArray &original);
-    
+    DynamicArray(const DynamicArray<T> &original);
     ~DynamicArray();
     
-    DynamicArray& operator=(const DynamicArray &rhs);
+    // Operators
+    DynamicArray<T>& operator=(const DynamicArray<T> &rhs);
+    bool operator==(const DynamicArray<T> &other) const;
+    bool operator!=(const DynamicArray<T> &other) const;
+    
+    /** Add item to the end of the Dynamic Array */
+    DynamicArray<T>& operator+=(const T &rhs);
+    DynamicArray<T>& operator-=(const T &rhs);
     
     T &operator[](size_t index) throw(std::out_of_range);
     const T& operator[](size_t index) const throw(std::out_of_range);
     
+    // Iterators
     typedef T* iterator;
     typedef const T* const_iterator;
     iterator begin() { return &data[0]; }
     iterator end() { return &data[eltsInUse]; }
     
     /**
-     *Prints out the contents of the array
+     * Prints out the contents of the array
      *@pre none
      *@param out The stream to print to
-     *@param delimiter Character to use between elements
+     *@param delimiter Char to use between elements
      */
     void print(std::ostream &out, char delimiter = ' ') const;
-    
-    void print() const;
+    void print() const { print(std::cout, ' '); }
     
     /** @return True if list is empty; false otherwise */
     bool isEmpty() const;
@@ -50,14 +57,14 @@ public:
     size_t numberOfItems() const;
     
     /** 
-     *Inserts an item into the front of the container
+     * Inserts an item into the front of the container
      *@pre none
      *@param item The item to insert into the container 
      */
     void insertFront(T item);
     
     /** 
-     *Inserts an item into the back of the container
+     * Inserts an item into the back of the container
      *@pre none
      *@param item The item to insert into the container 
      */
@@ -150,21 +157,12 @@ private:
     void resize();
 };
 
-template<class T>
-inline bool operator==(const T& lhs, const T& rhs)
-{   
-   if (lhs.numberOfItems() != rhs.numberOfItems())
-       return false;
-    
-    for (size_t i = 0; i < lhs.numberOfItems(); i++)
-	if(lhs[i] != rhs[i])
-	    return false;
-	
-    return true;
-}
+template <class T>
+std::ostream &operator<<(std::ostream &outStream, const DynamicArray<T> &arr);
 
-template<class T>
-inline bool operator!=(const T&lhs, const T& rhs) {return !operator==(lhs,rhs);}
+template <class T>
+std::istream &operator>>(std::istream &inStream, DynamicArray<T> &arr);
+
 
 #include "DynamicArray.cxx"
 #endif

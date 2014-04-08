@@ -1,11 +1,9 @@
 /**
-@file DynamicArray.cxx
-@author Kyle Givler
+ * Dynamic Array Implmentation
+ * @file DynamicArray.cxx
+ * @author Kyle Givler
  */
 
-#include <iostream>
-#include <stdexcept>
-#include "DynamicArray.h"
 /*************************** CONSTRUCTORS **************************/
 
 template <class T>
@@ -20,7 +18,7 @@ DynamicArray<T>::DynamicArray(size_t cap)
 }
 
 template <class T>
-DynamicArray<T>::DynamicArray(const DynamicArray &original)
+DynamicArray<T>::DynamicArray(const DynamicArray<T> &original)
 {
     capacity = original.capacity;
     eltsInUse = original.eltsInUse;
@@ -61,12 +59,46 @@ DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T> &rhs)
 	return (*this);
 }
 
+template<class T>
+bool DynamicArray<T>::operator==(const DynamicArray<T> &other) const
+{   
+    // TODO: Test
+   if (numberOfItems() != other.numberOfItems())
+       return false;
+    
+    for (size_t i = 0; i < other.numberOfItems(); i++)
+	if(data[i] != other.data[i])
+	    return false;
+	
+    return true;
+}
+
+template<class T>
+bool DynamicArray<T>::operator!=(const DynamicArray<T> &other) const
+{
+    // TODO: Test
+    return !(*this == other);
+}
+
+template<class T>
+DynamicArray<T>& DynamicArray<T>::operator+=(const T &rhs)
+{
+    // TODO: Test
+    insertEnd(rhs);
+}
+
+template<class T>
+DynamicArray<T>& DynamicArray<T>::operator-=(const T &rhs)
+{
+    // TODO: Test
+    removeByValue(rhs);
+}
+
 template <class T>
 T &DynamicArray<T>::operator[](size_t i) throw(std::out_of_range)
 {
 	if (i > eltsInUse)
 		throw std::out_of_range("Invalid index");
-		
 
 	return data[i];
 }
@@ -75,8 +107,8 @@ template <class T>
 const T& DynamicArray<T>::operator[](size_t i) const throw(std::out_of_range)
 {
     if (i > eltsInUse)
-		throw std::out_of_range("Invalid index");
-	
+	throw std::out_of_range("Invalid index");
+
     return data[i];
 }
 /**********************************************************************/
@@ -91,12 +123,6 @@ void DynamicArray<T>::print(std::ostream &out, char delimiter) const
 	    out << delimiter;
     }
     out << std::endl;
-}
-
-template <class T>
-void DynamicArray<T>::print() const
-{
-    print(std::cout, ' ');
 }
 
 template <class T>

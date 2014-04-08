@@ -5,15 +5,9 @@ Test program for DynamicArray ADT
  */
 
 #include <iostream>
-#include <algorithm>
 #include "DynamicArray.h"
 
 using namespace std;
-
-void testForEach(int item)
-{
-    cout << "testForEach(): " << item << endl;
-}
 
 int main()
 {
@@ -106,9 +100,6 @@ int main()
 	cout << "Equal operator passed\n";
     else
 	cout << "Equal operator failed\n";
-    
-    cout << "\nTesting for_each: " << dyn3;
-    for_each(dyn3.begin(), dyn3.end(), testForEach);
     
     return 0;
 }

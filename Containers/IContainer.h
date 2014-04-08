@@ -16,7 +16,7 @@ public:
     /** @return True if list is empty; false otherwise */
     virtual bool isEmpty() const = 0;
     
-    /** @return The number otems in the container */
+    /** @return The number of items in the container */
     virtual size_t numberOfItems() const = 0;
     
     /** 
