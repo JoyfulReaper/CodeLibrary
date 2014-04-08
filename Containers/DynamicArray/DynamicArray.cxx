@@ -128,7 +128,7 @@ void DynamicArray<T>::print(std::ostream &out, char delimiter) const
 template <class T>
 bool DynamicArray<T>::isEmpty() const
 {
-    return eltsInUse == 0;
+    return (!eltsInUse);
 }
 
 template <class T>
