@@ -1,5 +1,5 @@
-CC = g++
-#CC = clang++
+#CC = g++
+CC = clang++
 CFLAGS = -c -std=c++11 -Wall -ggdb
 #CFLAGS = -c -Wall -g
 

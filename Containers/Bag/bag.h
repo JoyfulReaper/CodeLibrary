@@ -81,6 +81,9 @@ private:
 };
 
 template <class T>
+std::istream &operator>>(std::istream &inStream,Bag<T> &bag);
+
+template <class T>
 std::ostream &operator<<(std::ostream &out, const Bag<T> &bag);
 
 #include "bag.cxx"

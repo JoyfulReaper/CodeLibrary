@@ -158,10 +158,9 @@ void DynamicArray<T>::insertByPosition(size_t index, T item) throw (std::invalid
     {
 	for(position = eltsInUse; position >= index; position--)
 	    data[position] = data[position-1];
-
-	data[index] = item;
-	eltsInUse++;
-	return;
+	    data[index] = item;
+	    eltsInUse++;
+	    return;
     }
     else if (index >= 0 && index <= eltsInUse)
     {	  

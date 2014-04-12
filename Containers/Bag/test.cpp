@@ -58,5 +58,14 @@ int main()
     cout << "\nTesting == operator test==bag4: " << (test == mBag4) << endl;
     cout << "Testing != operator test!=bag4: " << (test != mBag4) << endl;
     
+    test += 1;
+    cout << "Testing +=: contents " <<  test << endl;
+    test += 33;
+    cout << "Contents: " << test <<endl;
+    
+    cout << "Testing -=: contents " <<  test << endl;
+    test -= 33;
+    cout << "Contents: " << test <<endl;
+    
     return 0;
 }

@@ -94,7 +94,6 @@ bool Bag<T>::operator!=(const Bag<T> &other) const
 template <class T>
 Bag<T>& Bag<T>::operator+=(const T &rhs)
 {
-    // TODO: Test
     add(rhs);
     return *this;
 }
@@ -102,7 +101,6 @@ Bag<T>& Bag<T>::operator+=(const T &rhs)
 template <class T>
 Bag<T>& Bag<T>::operator-=(const T &rhs)
 {
-    // TODO: Test
     remove(rhs);
     return *this;
 }
@@ -185,6 +183,16 @@ template <class T>
 void Bag<T>::print(std::ostream &out, char delim) const
 {
     data->print(out, delim);
+}
+
+template <class T>
+std::istream &operator>>(std::istream &inStream,Bag<T> &bag)
+{
+    // TODO: Test
+    T newDataItem;
+    inStream >> newDataItem;
+    bag.add(newDataItem);
+    return inStream;
 }
 
 template <class T>
