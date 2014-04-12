@@ -1,7 +1,7 @@
 #binaries
-Containers/DynamicArray/test
-Containers/Bag/test
-Containers/LinkedList/test
+ADTs/DynamicArray/test
+ADTs/Bag/test
+ADTs/LinkedList/test
 
 docs/*
 *~
