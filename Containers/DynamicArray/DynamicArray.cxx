@@ -120,7 +120,6 @@ void DynamicArray<T>::print(std::ostream &out, char delimiter) const
 	if (i < eltsInUse - 1)
 	    out << delimiter;
     }
-    out << std::endl;
 }
 
 template <class T>

@@ -1,6 +1,6 @@
-CC = g++
-#CC = clang++
-CFLAGS = -c -Wall -std=c++11 -ggdb
+#CC = g++
+CC = clang++
+CFLAGS = -c -Wall -Wextra -std=c++11 -ggdb -O0
 #CFLAGS = -c -std=c++11 -march=native -O2
 
 all: test

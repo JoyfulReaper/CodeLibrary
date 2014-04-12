@@ -25,25 +25,25 @@ int main()
     Bag<int> mBag2;
     cout << "\nTesting equal operator: ";
     mBag2 = mBag;
-    cout << mBag2;
+    cout << mBag2 << endl;
     cout << "Testing copy constructor: ";
     Bag<int> mBag3(mBag2);
-    cout << mBag3;
+    cout << mBag3 << endl;
     
     cout << "\nTesting remove(2): ";
     mBag3.remove(2);
-    cout << mBag3;
+    cout << mBag3 << endl;
     
     cout << "\nTesting clear(): ";
     mBag3.clear();
-    cout << mBag3;
+    cout << mBag3 << endl;
     
     cout << "\nTesting contains(3): " << mBag2.contains(3) << endl;
     mBag2.contains(3);
-    cout << mBag2;
+    cout << mBag2 << endl;
     cout << "\nTesting contains(7): " << mBag2.contains(7) << endl;
     mBag2.contains(7);
-    cout << mBag2;
+    cout << mBag2 << endl;
     
     Bag<int> mBag4;
     mBag4.add(1);
