@@ -8,7 +8,7 @@ all: test
 test: test.o
 	$(CC) test.o -o test
 
-test.o: test.cpp DynamicArray.cxx DynamicArray.h
+test.o: test.cpp DynamicArray.cxx DynamicArray.h DynamicArrayIterator.h
 	$(CC) $(CFLAGS) test.cpp 
 	
 clean:

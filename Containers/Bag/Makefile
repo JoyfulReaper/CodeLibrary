@@ -8,7 +8,7 @@ all: test
 test: test.o
 	$(CC) test.o -o test
 
-test.o: test.cpp bag.cxx bag.h
+test.o: test.cpp bag.cxx bag.h BagIterator.h
 	$(CC) $(CFLAGS) test.cpp 
 	
 clean:

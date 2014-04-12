@@ -5,12 +5,6 @@
  * A Dynmaic Array Based Bag ADT
  */
 
-
-/* TODOs:
- * TODO: Testing of untested methods
- * TODO: Add stream insertion operator
- */
-
 /*************************** CONSTRUCTORS **************************/
 
 template <class T>

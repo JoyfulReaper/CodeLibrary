@@ -23,7 +23,7 @@ public:
     DynamicArray(size_t capacity = 10);
     DynamicArray(const DynamicArray<T> &original);
     ~DynamicArray();
-    
+
     // Operators
     DynamicArray<T>& operator=(const DynamicArray<T> &rhs);
     bool operator==(const DynamicArray<T> &other) const;

@@ -13,6 +13,7 @@
 
 #include "IBag.h"
 #include "../DynamicArray/DynamicArray.h"
+#include "BagIterator.h"
 
 template<class T>
 class Bag : public BagInterface<T>
@@ -27,6 +28,12 @@ public:
     bool operator!=(const Bag<T> &other) const;
     Bag<T>& operator+=(const T &rhs);
     Bag<T>& operator-=(const T &rhs);
+    
+    BagIterator<T> begin()
+    { return BagIterator<T>(this, 0); }
+    
+    BagIterator<T> end()
+    { return BagIterator<T>(this, data->eltsInUse); }
     
      /**
      * @return number of items in the bag
