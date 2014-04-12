@@ -23,7 +23,10 @@ LinkedList<T>::LinkedList()
 template <class T>
 LinkedList<T>::LinkedList(const LinkedList &original)
 {
-	copy(original);
+    numberOfNodes = original.numberOfNodes;
+    head = nullptr;
+    tail = nullptr;
+    copy(original);
 }
 
 template <class T>
@@ -37,7 +40,8 @@ LinkedList<T>::~LinkedList()
 template <class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList &rhs)
 {
-    copy(rhs);
+    if (this != &rhs)
+	copy(rhs);
 
     return (*this);
 }
@@ -90,14 +94,13 @@ void LinkedList<T>::insertEnd(T item)
 {
     node *current = head;
     if (head == nullptr)
-	head = new node(item, nullptr);
+	insertFront(item);
     else
     {
 	while(current->next != nullptr)
 	    current = current->next;
 	
 	current->next = new node(item, nullptr);
-	
     }
     numberOfNodes++;
 }
@@ -127,6 +130,7 @@ void LinkedList<T>::insertByPosition(size_t index, T item)
 	    {
 		newNode = new node(item, current->next->next);
 		current->next = newNode;
+		numberOfNodes++;
 	    }
 	}
     }
@@ -162,7 +166,14 @@ void LinkedList<T>::getEnd(T &item) const
 template <class T>
 void LinkedList<T>::getByPosition(size_t index, T &item) const
 {
-    //TODO
+    if (index < numberOfNodes)
+    {
+	node *current = head;
+	for (size_t i = 0; i < index; i++)
+	    current = current->next;
+	
+	item = current->data;
+    }
 }
 
 template <class T>
@@ -233,18 +244,15 @@ void LinkedList<T>::removeAll()
 template <class T>
 void LinkedList<T>::copy(const LinkedList<T> &org)
 {
-    if(this != &org)
+    removeAll();
+    head = nullptr;
+    tail = nullptr;
+
+    node *current = org.head;
+    while(current != nullptr)
     {
-	removeAll();
-	head = nullptr;
-	tail = nullptr;
-	
-	node *current = org.head;
-	while(current != nullptr)
-	{
-	    insertEnd(current->data);
-	    current = current->next;
-	}
+	insertEnd(current->data);
+	current = current->next;
     }
 }
 
