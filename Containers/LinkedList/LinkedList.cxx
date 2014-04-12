@@ -8,6 +8,7 @@
  * TODO: exceptions
  * TODO: additional operators
  * TODO: Iterators
+ * TODO: Doubly linked list?
  */
 
 /*************************** CONSTRUCTORS **************************/
