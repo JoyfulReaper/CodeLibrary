@@ -72,6 +72,13 @@ int main()
     list3.removeByValue(22);
     cout << list3 <<endl;
     
-    
+    LinkedList<int> list4;
+    cout << "\nTesting insertByValue(1,2,3,4,5) \n";
+    list4.insertByValue(2);
+    list4.insertByValue(4);
+    list4.insertByValue(5);
+    list4.insertByValue(3);
+    list4.insertByValue(1);
+    cout << list4 << endl;
     return 0;
 }

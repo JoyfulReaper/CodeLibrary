@@ -28,6 +28,8 @@ public:
      */
     void copy(const LinkedList<T> &orginal);
     
+    void swapDataItem(T& x, T& y);
+    
     /*******************************************************************/
     
     /** @return True if list is empty; false otherwise */

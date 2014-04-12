@@ -139,7 +139,25 @@ void LinkedList<T>::insertByPosition(size_t index, T item)
 template <class T>
 void LinkedList<T>::insertByValue(T anItem)
 {
-    //TODO
+    insertFront(anItem);
+    node *current = head;
+    
+    while(current->next != nullptr)
+    {
+	if(current->data <= current->next->data)
+	    return;
+	swapDataItem(current->data, current->next->data);
+	current = current->next;
+    }
+}
+
+template <class T>
+void LinkedList<T>::swapDataItem(T& x, T& y)
+{
+  T temp;
+  temp = x;
+  x = y;
+  y = temp;
 }
 
 template <class T>
@@ -296,6 +314,9 @@ std::ostream& operator<<(std::ostream &out, const LinkedList<T> &list)
 template <class T>
 std::istream& operator>>(std::istream &in, LinkedList<T> &list)
 {
-    // TODO
+    // TODO test
+    T newDataItem;
+    in >> newDataItem;
+    list.insertEnd(newDataItem);
     return in;
 }
