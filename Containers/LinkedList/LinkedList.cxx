@@ -221,14 +221,42 @@ void LinkedList<T>::removeEnd()
 template <class T>
 void LinkedList<T>::removeByPosition(size_t position)
 {
-    //TODO
+    node *current;
+    node *deleteNode;
+    
+    if( (position >=0) && (position < numberOfNodes) )
+    {
+	if(position == 0)
+	    removeFront();
+	else if(position == numberOfNodes)
+	    removeEnd();
+	else
+	{
+	    current = head;
+	    for(size_t i = 1; i < position; i++)
+		current = current->next;
+	    deleteNode = current->next;
+	    current->next = deleteNode->next;
+	    delete deleteNode;
+	}
+    }
 }
 
 
 template <class T>
 bool LinkedList<T>::removeByValue(T item)
 {
-    //TODO
+    node *current = head;
+    for(size_t i = 0; current != nullptr; i++)
+    {
+	if(current->data == item)
+	{
+	    removeByPosition(i);
+	    return true;
+	}
+	current = current->next;
+    }
+    
     return false;
 }
 

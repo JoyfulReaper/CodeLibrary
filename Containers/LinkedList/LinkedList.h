@@ -27,6 +27,7 @@ public:
      * @param original The list to copy
      */
     void copy(const LinkedList<T> &orginal);
+    
     /*******************************************************************/
     
     /** @return True if list is empty; false otherwise */
@@ -116,6 +117,7 @@ public:
      * @post The container is empty
      */
      void removeAll();
+     
 private:
     
     class node

@@ -50,6 +50,28 @@ int main()
     cout << "list2: " << list << endl;
     cout << "list3: " << list2 << endl;
     
+    int data;
+    list3.getFront(data);
+    cout << "\nTesting getFront(): " << data << endl;
+    list3.getEnd(data);
+    cout << "Testing getEnd(): " << data << endl;
+    cout << list3 << endl;
+    
+    cout << "Testing removeFront(): " << endl;
+    list3.removeFront();
+    cout << "Testing removeEnd(): " << endl;
+    list3.removeEnd();
+    cout << list3 << endl;
+    list3.getByPosition(4, data);
+    cout << "Testing getByPosition(4): " << data << endl;
+    
+    cout << "\nTesting RemoveByPosition(3)\n";
+    list3.removeByPosition(3);
+    cout << list3 <<endl;
+    cout << "\nTesting RemoveByValue(22)\n";
+    list3.removeByValue(22);
+    cout << list3 <<endl;
+    
     
     return 0;
 }
