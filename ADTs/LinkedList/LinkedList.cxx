@@ -52,7 +52,7 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList &rhs)
 template <class T>
 void LinkedList<T>::print(std::ostream &out, char del) const
 {
-   node *current = head;
+   node<T> *current = head;
     if (head == nullptr)
 	out << "(empty)";
     else
@@ -85,15 +85,15 @@ size_t LinkedList<T>::numberOfItems() const
 template <class T>
 void LinkedList<T>::insertFront(T item)
 {
-    node *oldHead = head;
-    head = new node(item, oldHead);
+    node<T> *oldHead = head;
+    head = new node<T>(item, oldHead);
     numberOfNodes++;
 }
 
 template <class T>
 void LinkedList<T>::insertEnd(T item)
 {
-    node *current = head;
+    node<T> *current = head;
     if (head == nullptr)
 	insertFront(item);
     else
@@ -101,7 +101,7 @@ void LinkedList<T>::insertEnd(T item)
 	while(current->next != nullptr)
 	    current = current->next;
 	
-	current->next = new node(item, nullptr);
+	current->next = new node<T>(item, nullptr);
     }
     numberOfNodes++;
 }
@@ -109,8 +109,8 @@ void LinkedList<T>::insertEnd(T item)
 template <class T>
 void LinkedList<T>::insertByPosition(size_t index, T item)
 {
-    node *current;
-    node *newNode;
+    node<T> *current;
+    node<T> *newNode;
     
     if( (index >=0) && (index <= numberOfNodes) )
     {
@@ -129,7 +129,7 @@ void LinkedList<T>::insertByPosition(size_t index, T item)
 		insertEnd(item);
 	    else
 	    {
-		newNode = new node(item, current->next->next);
+		newNode = new node<T>(item, current->next->next);
 		current->next = newNode;
 		numberOfNodes++;
 	    }
@@ -141,7 +141,7 @@ template <class T>
 void LinkedList<T>::insertByValue(T anItem)
 {
     insertFront(anItem);
-    node *current = head;
+    node<T> *current = head;
     
     while(current->next != nullptr)
     {
@@ -173,7 +173,7 @@ void LinkedList<T>::getFront(T &item) const
 template <class T>
 void LinkedList<T>::getEnd(T &item) const
 {
-    node *current = head;
+    node<T> *current = head;
     if (head != nullptr)
     {
 	while(current->next != nullptr)
@@ -187,7 +187,7 @@ void LinkedList<T>::getByPosition(size_t index, T &item) const
 {
     if (index < numberOfNodes)
     {
-	node *current = head;
+	node<T> *current = head;
 	for (size_t i = 0; i < index; i++)
 	    current = current->next;
 	
@@ -198,7 +198,7 @@ void LinkedList<T>::getByPosition(size_t index, T &item) const
 template <class T>
 void LinkedList<T>::removeFront()
 {
-    node *deleteNode = head;
+    node<T> *deleteNode = head;
     if(head != nullptr)
     {
 	head = head->next;
@@ -210,9 +210,9 @@ void LinkedList<T>::removeFront()
 template <class T>
 void LinkedList<T>::removeEnd()
 {
-    node *current = head;
-    node *previous= nullptr;
-    node *deleteNode;
+    node<T> *current = head;
+    node<T> *previous= nullptr;
+    node<T> *deleteNode;
     
     if(head != nullptr)
     {
@@ -240,8 +240,8 @@ void LinkedList<T>::removeEnd()
 template <class T>
 void LinkedList<T>::removeByPosition(size_t position)
 {
-    node *current;
-    node *deleteNode;
+    node<T> *current;
+    node<T> *deleteNode;
     
     if( (position >=0) && (position < numberOfNodes) )
     {
@@ -265,7 +265,7 @@ void LinkedList<T>::removeByPosition(size_t position)
 template <class T>
 bool LinkedList<T>::removeByValue(T item)
 {
-    node *current = head;
+    node<T> *current = head;
     for(size_t i = 0; current != nullptr; i++)
     {
 	if(current->data == item)
@@ -295,7 +295,7 @@ void LinkedList<T>::copy(const LinkedList<T> &org)
     head = nullptr;
     tail = nullptr;
 
-    node *current = org.head;
+    node<T> *current = org.head;
     while(current != nullptr)
     {
 	insertEnd(current->data);

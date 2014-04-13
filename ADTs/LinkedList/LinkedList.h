@@ -9,6 +9,8 @@
 
 #include <iostream>
 #include "../IContainer.h"
+#include "node.h"
+#include "LinkedListIterator.h"
 
 template<class T>
 class LinkedList : public IContainer<T>
@@ -121,20 +123,8 @@ public:
      void removeAll();
      
 private:
-    
-    class node
-    {
-    public:
-	T data;
-	node *next;
-	node(T i, node *l): data(i), next(l)
-	{
-	};
-    };
-    
-
-    node *head;
-    node *tail;
+    node<T> *head;
+    node<T> *tail;
     size_t numberOfNodes;
 };
 
