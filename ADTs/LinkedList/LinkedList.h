@@ -19,6 +19,12 @@ public:
     LinkedList();
     LinkedList(const LinkedList<T> &org);
     ~LinkedList();
+   
+   LinkedListIterator<T> begin()
+   { return LinkedListIterator<T>(this, head);}
+   
+   LinkedListIterator<T> end()
+   { return LinkedListIterator<T>(this, nullptr);}
     
     LinkedList<T>& operator=(const LinkedList &rhs);
     

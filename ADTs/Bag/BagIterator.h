@@ -1,5 +1,7 @@
 /**
- * Iterator for the Bag
+ * Iterator for the Bag ADT
+ * @file BagIterator.h
+ * @author Kyle Givler
  */
 
 #ifndef _BAG_ITERATOR_H_

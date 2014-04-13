@@ -1,5 +1,7 @@
 /**
  * Iterator for the dynamic array
+ * @file DynamicArrayIterator.h
+ * @author Kyle Givler
  */
 
 #ifndef _DYNAMIC_ARRAY_ITERATOR_H_

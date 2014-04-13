@@ -28,14 +28,13 @@ public:
     DynamicArray<T>& operator=(const DynamicArray<T> &rhs);
     bool operator==(const DynamicArray<T> &other) const;
     bool operator!=(const DynamicArray<T> &other) const;
-    
     /** Add item to the end of the Dynamic Array */
     DynamicArray<T>& operator+=(const T &rhs);
     DynamicArray<T>& operator-=(const T &rhs);
-    
     T &operator[](size_t index) throw(std::out_of_range);
     const T& operator[](size_t index) const throw(std::out_of_range);
     
+    // Iterators
     DynamicArrayIterator<T> begin()
     { return DynamicArrayIterator<T>(this, 0); }
     

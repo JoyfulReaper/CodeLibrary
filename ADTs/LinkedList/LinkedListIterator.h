@@ -1,5 +1,7 @@
 /**
  * Iterator for the LinkedList
+ * @file LinkedListIterator.h
+ * @author Kyle Givler
  */
 
 #ifndef _LINKED_LIST_ITERATOR_H_
