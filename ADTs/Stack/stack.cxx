@@ -32,6 +32,25 @@ Stack<T>::~Stack()
     delete data;
 }
 
+template<class T>
+Stack<T>& Stack<T>::operator=(const Stack<T> &rhs)
+{
+    if(this != &rhs)
+    {
+	numItems = rhs.numItems;
+	if(data != nullptr)
+	    delete data;
+	data = new DynamicArray<T>(numItems * 1.5);
+	T item;
+	for(size_t i = 0; i < numItems; i++)
+	{
+	    rhs.data->getByPosition(i, item);
+	    data->insertByPosition(i, item);
+	}
+    }
+    return (*this);
+}
+
 template <class T>
 bool Stack<T>::isEmpty() const
 {

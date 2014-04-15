@@ -38,4 +38,14 @@ int main()
 	cout << mStack.peek() << endl;
 	mStack.pop();
     }
+    
+    
+    mStack.push(1);
+    mStack2 = mStack; 
+    cout << "\nTesting = operator\n";
+    while(!mStack2.isEmpty())
+    {
+	cout << mStack2.peek() << endl;
+	mStack2.pop();
+    }
 }

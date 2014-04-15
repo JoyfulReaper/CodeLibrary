@@ -23,6 +23,8 @@ public:
     Stack(const Stack &org);
     ~Stack();
     
+    Stack<T>& operator=(const Stack<T> &rhs);
+    
     /**
      * Check if the stack is isEmpty
      * @return true if empty, otherwise false
