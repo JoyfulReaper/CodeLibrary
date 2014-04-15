@@ -51,6 +51,28 @@ Stack<T>& Stack<T>::operator=(const Stack<T> &rhs)
     return (*this);
 }
 
+template<class T>
+bool Stack<T>::operator==(const Stack<T> &rhs) const
+{
+    if(numItems != rhs.numItems)
+	return false;
+    
+    auto oit = rhs.data->begin();
+    for(auto it = data->begin(); it != data->end(); ++it)
+    {
+	if(*it != *oit)
+	    return false;
+	++oit;
+    }
+    return true;
+}
+
+template<class T>
+bool Stack<T>::operator!=(const Stack<T> &rhs) const
+{
+    return !(*this == rhs);
+}
+
 template <class T>
 bool Stack<T>::isEmpty() const
 {

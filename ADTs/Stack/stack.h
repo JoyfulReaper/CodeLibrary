@@ -24,6 +24,8 @@ public:
     ~Stack();
     
     Stack<T>& operator=(const Stack<T> &rhs);
+    bool operator==(const Stack<T> &rhs) const;
+    bool operator!=(const Stack<T> &rhs) const;
     
     /**
      * Check if the stack is isEmpty

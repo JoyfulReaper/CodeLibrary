@@ -48,4 +48,7 @@ int main()
 	cout << mStack2.peek() << endl;
 	mStack2.pop();
     }
+    mStack.push(2);
+    cout << "\nTesting !=/== operators:\n";
+    cout << "Expect 1: " << (mStack != mStack2) << endl;
 }
