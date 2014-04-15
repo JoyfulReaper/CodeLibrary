@@ -13,6 +13,19 @@ Stack<T>::Stack(size_t size)
 }
 
 template<class T>
+Stack<T>::Stack(const Stack &org)
+{
+    numItems = org.numItems;
+    data = new DynamicArray<T>(numItems * 1.5);
+    T item;
+    for(size_t i = 0; i < numItems; i++)
+    {
+	org.data->getByPosition(i, item);
+	data->insertByPosition(i, item);
+    }
+}
+
+template<class T>
 Stack<T>::~Stack()
 {
     data->removeAll();

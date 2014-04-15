@@ -20,6 +20,7 @@ public:
      * @param Initialize Initial size of the array
      */
     Stack(size_t intialSize = 10);
+    Stack(const Stack &org);
     ~Stack();
     
     /**

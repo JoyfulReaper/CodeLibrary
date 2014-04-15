@@ -26,4 +26,16 @@ int main()
 	cout << mStack.peek() << endl;
 	mStack.pop();
     }
+    
+    mStack.push(4);
+    mStack.push(5);
+    mStack.push(6);
+    Stack<int> mStack2(mStack);
+    cout << "Testing Copy Constuctor (expect 6,5,4)\n";
+    
+    while(!mStack.isEmpty())
+    {
+	cout << mStack.peek() << endl;
+	mStack.pop();
+    }
 }
