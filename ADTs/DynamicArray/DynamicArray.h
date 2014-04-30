@@ -18,18 +18,29 @@ class DynamicArray : public IContainer<T>
 public:
     /**
      * Capacity must be >= 1, if not it will be set to 1
-     *@param capacity Initial capacity of the array
+     * @param capacity Initial capacity of the array
      */
     DynamicArray(size_t capacity = 10);
+    
+    /**
+     * Copy constructor
+     * @param original The DynamicArray to be copied
+     */
     DynamicArray(const DynamicArray<T> &original);
+    
+    /**
+     * Destructor
+     */
     ~DynamicArray();
 
     // Operators
     DynamicArray<T>& operator=(const DynamicArray<T> &rhs);
     bool operator==(const DynamicArray<T> &other) const;
     bool operator!=(const DynamicArray<T> &other) const;
+    
     /** Add item to the end of the Dynamic Array */
     DynamicArray<T>& operator+=(const T &rhs);
+    /** Remove item from DynamicArray */
     DynamicArray<T>& operator-=(const T &rhs);
     T &operator[](size_t index) throw(std::out_of_range);
     const T& operator[](size_t index) const throw(std::out_of_range);
