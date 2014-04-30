@@ -54,5 +54,7 @@ int main()
     
     cout << "Testing << operator\n";
     mStack2.push(66);
+    mStack2.push(67);
+    mStack2.push(66);
     cout << mStack2;
 }
