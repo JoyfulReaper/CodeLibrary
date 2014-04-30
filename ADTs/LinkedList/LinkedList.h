@@ -16,16 +16,30 @@ template<class T>
 class LinkedList : public IContainer<T>
 {
 public:
+    /**
+     * Constructor
+     */
     LinkedList();
+    
+    /**
+     * Copy Constructor
+     * @param org the LinkedList to be copied
+     */
     LinkedList(const LinkedList<T> &org);
+    
+    /**
+     * Destructor
+     */
     ~LinkedList();
    
+    // Iterators
    LinkedListIterator<T> begin()
    { return LinkedListIterator<T>(this, head);}
    
    LinkedListIterator<T> end()
    { return LinkedListIterator<T>(this, nullptr);}
     
+    // Operators
     LinkedList<T>& operator=(const LinkedList &rhs);
     
     void print(std::ostream &out, char del = ' ') const;
