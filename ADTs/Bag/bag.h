@@ -19,16 +19,31 @@ template<class T>
 class Bag : public BagInterface<T>
 {
 public:
+    /**
+     * Constuctor for Bag
+     * @param init_size The initial size of the underlying dynamic array
+     */
     Bag(size_t init_size = 10); //Initial size for array
+    
+    /**
+     * Copy Constructor
+     * @param the bag to be copied
+     */
     Bag(const Bag<T> &org);
+    
+    /**
+     * Destructor
+     */
     ~Bag();
     
+    // Operators
     Bag<T>& operator=(const Bag<T> &rhs);
     bool operator==(const Bag<T> &other) const;
     bool operator!=(const Bag<T> &other) const;
     Bag<T>& operator+=(const T &rhs);
     Bag<T>& operator-=(const T &rhs);
     
+    // Iterators
     BagIterator<T> begin()
     { return BagIterator<T>(this, 0); }
     
@@ -36,33 +51,39 @@ public:
     { return BagIterator<T>(this, data->eltsInUse); }
     
      /**
+     * Get the number of items in the bag
      * @return number of items in the bag
      */
      size_t getSize() const;
     
      /**
+     * Determine if bag is empty
      * @return true if bag is empty, false otherwise
      */
     bool isEmpty() const;
     
      /**
+     *  Add an item to the bag
      * @param item Item to be insert into bag
      * @return true on sucess, false on failure
      */
     bool add(const T& item);
     
      /**
+     * Remove an item from the bag
      * @param item item to remove from bag;
      * @return true on sucess, false otherwise
      */
     bool remove(const T& item);
     
      /**
+     * Empty the bag
      * @post Bag contains no items
      */
     void clear();
     
      /**
+     * Check to see if the bag contains an item
      * @param item The object to check for
      * @return true if the bag contains it, false otherwise
      */
@@ -75,6 +96,7 @@ public:
     size_t getFrequency(const T& item) const;
     
      /**
+     * Convert bag to vector 
      * @return Vector containing all entries in bag
      */
     std::vector<T> toVector() const;
