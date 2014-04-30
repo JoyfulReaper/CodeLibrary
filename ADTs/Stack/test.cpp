@@ -51,4 +51,8 @@ int main()
     mStack.push(2);
     cout << "\nTesting !=/== operators:\n";
     cout << "Expect 1: " << (mStack != mStack2) << endl;
+    
+    cout << "Testing << operator\n";
+    mStack2.push(66);
+    cout << mStack2;
 }

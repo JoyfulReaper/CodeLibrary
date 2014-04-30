@@ -105,3 +105,25 @@ T Stack<T>::peek() const
     data->getByPosition(numItems - 1, item);
     return item;
 }
+
+template <class T>
+void Stack<T>::print(std::ostream &out, char del) const
+{
+    T item;
+    for(size_t i = 0; i < numItems; i++)
+    {
+	data->getByPosition(i, item);
+	out << item;
+	if (i < (numItems -1))
+	    out << del;
+	else
+	    out << std::endl;
+    }
+}
+
+template <class T>
+std::ostream &operator<<(std::ostream &out, const Stack<T> &rhs)
+{
+    rhs.print(out, ' ');
+    return out;
+}

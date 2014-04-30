@@ -51,10 +51,15 @@ public:
      * @return The top of the stack
      */
      T peek() const;
+     
+     void print(std::ostream &out=std::cout, char del=' ') const;
 private:
     size_t numItems;
     DynamicArray<T> *data;
 };
+
+template <class T>
+std::ostream &operator<<(std::ostream &out, const Stack<T> &rhs);
 
 #include "stack.cxx"
 
