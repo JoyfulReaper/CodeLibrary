@@ -5,9 +5,9 @@ CFLAGS = -c -Wall -Wextra -std=c++11 -ggdb -O0
 
 
 
-all: test
+all: liblogger.a test
 
-test: test.o liblogger.a
+test: test.o
 	$(CC) test.o -L=./ -llogger -o test
 
 logger.o: logger.cxx logger.hpp
@@ -17,7 +17,7 @@ test.o: test.cpp logger.o logger.hpp
 	$(CC) $(CFLAGS) test.cpp
 	
 liblogger.a: logger.hpp logger.o
-	ar -cvq liblogger.a logger.o
+	ar -rcs liblogger.a logger.o
 	
 clean:
 	rm -rf *.o liblogger.a test
