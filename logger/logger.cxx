@@ -5,48 +5,66 @@
 * Provide logging mechanism
 */
 
-#include <iostream>
 #include "logger.hpp"
 
-logger::logger(std::string name, size_t maxStreams, std::ostream &initStream)
+logger::logger(std::string name, Level level, std::ostream &initStream)
 {
   this->name = name;
-  this->maxStreams = maxStreams;
+  this->logLevel = level;
   addStream(initStream);
 }
   
 void logger::log(std::string message)
 {
+  log(getLevel(), message);
 }
 
 void logger::log(Level level, std::string message)
 {
-}
+  if (!(level >= logLevel)) // Not interested in this pirority message
+    return;
   
-void logger::setLevel(Level level)
-{
+  auto it = streams.begin();
+  while(it != streams.end())
+  {
+    **it << message << std::endl;
+    ++it;
+  }
 }
 
-Level logger::getLevel()
+void logger::setLevel(Level level)
 {
+  this->logLevel = level;
+}
+
+Level logger::getLevel() const
+{
+  return logLevel;
 }
   
-Level logger::ignoreLevel(Level level)
-{
-}
-  
-std::string logger::getName()
+std::string logger::getName() const
 {
   return name;
 }
   
 bool logger::addStream(std::ostream &o)
 {
-  return false;
+  streams.push_back(&o);
+  return true;
 }
 
 bool logger::removeStream(std::ostream &o)
 {
+  auto it = streams.begin();
+  while (it != streams.end())
+  {
+    if (*it == &o)
+    {
+      streams.erase(it);
+      return true;
+    }
+    ++it;
+  }
   return false;
 }
 
