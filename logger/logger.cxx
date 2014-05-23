@@ -10,7 +10,8 @@
 logger::logger(std::string name, Level level, std::ostream &initStream)
 {
   this->name = name;
-  this->logLevel = level;
+  setLevel(level);
+  setIgnoreLevel(Level::CONFIG);
   addStream(initStream);
 }
   
@@ -21,13 +22,39 @@ void logger::log(std::string message)
 
 void logger::log(Level level, std::string message)
 {
-  if (!(level >= logLevel)) // Not interested in this pirority message
+  if (level <= ignoreLevel) // Not interested in this pirority message
     return;
+  
+  std::string sLevel;
+  
+  switch (level)
+  {
+    case Level::FINE:
+      sLevel = "FINE";
+      break;
+    case Level::CONFIG:
+      sLevel = "CONFIG";
+      break;
+    case Level::INFO:
+      sLevel = "INFO";
+      break;
+    case Level::WARNING:
+      sLevel = "WARNING";
+      break;
+    case Level::ERROR:
+      sLevel = "ERROR";
+      break;
+    case Level::SEVERE:
+      sLevel = "SEVERE";
+      break;
+    default:
+      sLevel = "INVALID";
+  }
   
   auto it = streams.begin();
   while(it != streams.end())
   {
-    **it << message << std::endl;
+    **it << "LOGGER(" << name << ":" << sLevel << "): " << message << std::endl;
     ++it;
   }
 }
@@ -41,7 +68,17 @@ Level logger::getLevel() const
 {
   return logLevel;
 }
-  
+
+void logger::setIgnoreLevel(Level level)
+{
+  ignoreLevel = level;
+}
+
+Level logger::getIgnoreLevel()
+{
+  return ignoreLevel;
+}
+
 std::string logger::getName() const
 {
   return name;

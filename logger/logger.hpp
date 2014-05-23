@@ -19,7 +19,7 @@ public:
   /**
    * Constructor:
    * @param name The name of the logger
-   * @param level Initial logging level, messages less than this level are not logged
+   * @param level The default logging level
    * @param initStream The initial stream to log to
    */
   logger(std::string name = "Logger", Level level = Level::WARNING, std::ostream &initStream = std::cerr);
@@ -28,7 +28,7 @@ public:
   
   /**
    * Log message to output streams
-   * @param message The message to log at current piriority level
+   * @param message The message to log at default level
    */
   void log(std::string message);
   
@@ -40,14 +40,24 @@ public:
   void log(Level level, std::string message);
   
   /**
-   * @param level Messages with a piriority less than this level are not logged
+   * @param level Default logging level
    */
   void setLevel(Level level);
   
   /**
-   * @return The current logging level
+   * @return The current default logging level
    */
   Level getLevel() const;
+  
+  /**
+   * @param level messages with <= levels are ignored
+   */
+  void setIgnoreLevel(Level level);
+  
+  /**
+   * @return current ignore level
+   */
+  Level getIgnoreLevel();
   
   /**
    * @return the name of this logger
@@ -83,6 +93,7 @@ private:
   std::vector<std::ostream*> streams;
   std::string name; // Name of the logger
   Level logLevel; // Current logging level
+  Level ignoreLevel;
   bool enabled; // Is logging enabled?
 };
 
