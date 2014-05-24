@@ -7,7 +7,7 @@
 
 #include "logger.hpp"
 
-logger::logger(std::string name, Level level, std::ostream &initStream)
+Logger::Logger(std::string name, Level level, std::ostream &initStream)
 {
   this->name = name;
   setLevel(level);
@@ -15,12 +15,12 @@ logger::logger(std::string name, Level level, std::ostream &initStream)
   addStream(initStream);
 }
   
-void logger::log(std::string message)
+void Logger::log(std::string message)
 {
   log(getLevel(), message);
 }
 
-void logger::log(Level level, std::string message)
+void Logger::log(Level level, std::string message)
 {
   if (level <= ignoreLevel) // Not interested in this pirority message
     return;
@@ -59,38 +59,38 @@ void logger::log(Level level, std::string message)
   }
 }
 
-void logger::setLevel(Level level)
+void Logger::setLevel(Level level)
 {
   this->logLevel = level;
 }
 
-Level logger::getLevel() const
+Level Logger::getLevel() const
 {
   return logLevel;
 }
 
-void logger::setIgnoreLevel(Level level)
+void Logger::setIgnoreLevel(Level level)
 {
   ignoreLevel = level;
 }
 
-Level logger::getIgnoreLevel()
+Level Logger::getIgnoreLevel()
 {
   return ignoreLevel;
 }
 
-std::string logger::getName() const
+std::string Logger::getName() const
 {
   return name;
 }
   
-bool logger::addStream(std::ostream &o)
+bool Logger::addStream(std::ostream &o)
 {
   streams.push_back(&o);
   return true;
 }
 
-bool logger::removeStream(std::ostream &o)
+bool Logger::removeStream(std::ostream &o)
 {
   auto it = streams.begin();
   while (it != streams.end())
@@ -105,17 +105,17 @@ bool logger::removeStream(std::ostream &o)
   return false;
 }
 
-void logger::enable()
+void Logger::enable()
 {
   enabled = true;
 }
 
-void logger::disable()
+void Logger::disable()
 {
   enabled = false;
 }
 
-bool logger::isEnabled()
+bool Logger::isEnabled()
 {
   return enabled;
 }

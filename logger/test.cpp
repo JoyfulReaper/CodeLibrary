@@ -4,7 +4,7 @@
 
 int main()
 {
-  logger log("test");
+  Logger log("test");
   
   log.addStream(std::cout);
   log.log("test.cpp");
@@ -17,7 +17,7 @@ int main()
   
   ///////////////////////////////////////////////////
   
-  logger log2("log2");
+  Logger log2("log2");
   log2.log(Level::INFO, "INFO");
   log2.log("NOTINFO");
   
@@ -25,7 +25,7 @@ int main()
   
   std::ofstream fout;
   fout.open("test.file", std::ofstream::out | std::ofstream::app);
-  logger flog("flog", Level::WARNING, fout);
+  Logger flog("flog", Level::WARNING, fout);
   flog.log("file log");
   return 0;
 }

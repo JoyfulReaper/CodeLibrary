@@ -1,5 +1,5 @@
 /**
- * @file logger.hpp
+ * @file Logger.hpp
  * @author Kyle Givler
  * 
  * Provide logging mechanism
@@ -13,17 +13,17 @@
 
 enum class Level {FINE, CONFIG, INFO, WARNING, ERROR, SEVERE};
 
-class logger
+class Logger
 {
 public:
   /**
    * Constructor:
-   * @param name The name of the logger
+   * @param name The name of the Logger
    * @param level The default logging level
    * @param initStream The initial stream to log to
    */
-  logger(std::string name = "Logger", Level level = Level::WARNING, std::ostream &initStream = std::cerr);
-  logger(const logger& copy) = delete; // Disable copy Constructor
+  Logger(std::string name = "Logger", Level level = Level::WARNING, std::ostream &initStream = std::cerr);
+  Logger(const Logger& copy) = delete; // Disable copy Constructor
   
   
   /**
@@ -60,7 +60,7 @@ public:
   Level getIgnoreLevel();
   
   /**
-   * @return the name of this logger
+   * @return the name of this Logger
    */
   std::string getName() const;
   
@@ -91,7 +91,7 @@ public:
   
 private:
   std::vector<std::ostream*> streams;
-  std::string name; // Name of the logger
+  std::string name; // Name of the Logger
   Level logLevel; // Current logging level
   Level ignoreLevel;
   bool enabled; // Is logging enabled?
