@@ -42,7 +42,7 @@ void Logger::log(std::string message)
 
 void Logger::log(Level level, std::string message)
 {
-  if (level <= ignoreLevel) // Not interested in this pirority message
+  if (level <= ignoreLevel || !enabled) // Not interested in this pirority message
     return;
   
   std::string sLevel;
