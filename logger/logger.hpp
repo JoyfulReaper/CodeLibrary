@@ -71,6 +71,9 @@ public:
    */
   bool addStream(std::ostream &o);
   
+  /**
+   * @param o the stream to be removed
+   */
   bool removeStream(std::ostream &o);
   
   /**
