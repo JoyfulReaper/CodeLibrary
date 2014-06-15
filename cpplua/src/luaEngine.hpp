@@ -40,7 +40,11 @@ namespace cppLua
     luaEngine();
     ~luaEngine();
     
+    ///////////////////////////////////////////////////////
+    
     luaStackResult doString(std::string);
+    
+    lua_State* getLuaState() const {return lua;};
     
     template <class T> T getGlobal(T name);
     

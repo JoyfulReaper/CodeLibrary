@@ -39,6 +39,8 @@ namespace cppLua
     lua_close(lua);
   }
   
+  //////////////////////////////////////////////////////////////////////
+  
   luaStackResult luaEngine::doString(std::string script)
   {
     int stackTop = lua_gettop(lua);
@@ -46,15 +48,17 @@ namespace cppLua
     const int err = luaL_loadstring(lua, script.c_str());
     if (err != LUA_OK)
     {
-      throw luaExcept(lua_tostring(lua, -1));
-      // FIXME: Should we pop this?
+      std::string error = lua_tostring(lua, -1);
+      lua_pop(lua, 1);
+      throw luaExcept(error);
     }
     
     const int errCall = lua_pcall(lua, 0, LUA_MULTRET, 0);
     if (errCall != LUA_OK)
     {
-      throw luaExcept(lua_tostring(lua, -1));
-      // FIXME: should we pop this?
+      std::string error = lua_tostring(lua, -1);
+      lua_pop(lua, 1);
+      throw luaExcept(error);
     }
     
     return luaStackResult(lua, stackTop);
