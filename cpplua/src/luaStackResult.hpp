@@ -61,9 +61,8 @@ namespace cppLua
      * @param index Index of items
      * @return item at given index
      */
-    luaStackItem getItem(int index = 1) const;
     int getStackPos(int index) const;
-    
+    luaStackItem getItem(int index = 1) const {return luaStackItem(lua, getStackPos(index));}
     
   private:
     int prevStackTop;
