@@ -30,6 +30,7 @@
 #include <lua.hpp>
 #include <iostream>
 #include <string>
+#include <cassert>
 
 namespace cppLua
 {
@@ -39,7 +40,7 @@ namespace cppLua
     luaEngine();
     ~luaEngine();
     
-    void doString(std::string);
+    luaStackResult doString(std::string);
     
     template <class T> T getGlobal(T name);
     

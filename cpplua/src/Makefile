@@ -1,5 +1,5 @@
 CC = g++
-#CC = clang++
+CC = clang++
 CFLAGS = -c -Wall -Wextra -std=c++11 -ggdb -O0
 #CFLAGS = -c -std=c++11 -march=native -O2
 

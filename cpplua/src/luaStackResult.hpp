@@ -33,6 +33,10 @@ namespace cppLua
   class luaStackResult
   {
   public:
+    luaStackResult(lua_State *lua, int prevStackTop) : prevStackTop(prevStackTop), lua(lua) {}
+  private:
+    int prevStackTop;
+    lua_State *lua;
   };
 }
 #endif
