@@ -44,7 +44,8 @@ int main()
   
   std::ofstream fout;
   fout.open("test.file", std::ofstream::out | std::ofstream::app);
-  Logger flog("flog", Level::WARNING, fout);
+  Logger flog("flog", Level::WARN, fout);
   flog.log("file log");
+  flog.severe("OH NOES!");
   return 0;
 }

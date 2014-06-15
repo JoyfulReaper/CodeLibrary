@@ -31,7 +31,7 @@
 #include <vector>
 #include <iostream>
 
-enum class Level {FINE, CONFIG, INFO, WARNING, ERROR, SEVERE};
+enum class Level {TRACE, DEBUG, INFO, WARN, ERROR, SEVERE};
 
 class Logger
 {
@@ -42,7 +42,7 @@ public:
    * @param level The default logging level
    * @param initStream The initial stream to log to
    */
-  Logger(std::string name = "Logger", Level level = Level::WARNING, std::ostream &initStream = std::cerr);
+  Logger(std::string name = "Logger", Level level = Level::WARN, std::ostream &initStream = std::cerr);
   Logger(const Logger& copy) = delete; // Disable copy Constructor
   
   
@@ -58,6 +58,36 @@ public:
    * @param message The message to Log
    */
   void log(Level level, std::string message);
+  
+  void trace(std::string msg)
+  {
+    log(Level::TRACE, msg);
+  }
+  
+  void debug(std::string msg)
+  {
+    log(Level::DEBUG, msg);
+  }
+  
+  void info(std::string msg)
+  {
+    log(Level::INFO, msg);
+  }
+  
+  void warn(std::string msg)
+  {
+    log(Level::WARN, msg);
+  }
+  
+  void error(std::string msg)
+  {
+    log(Level::ERROR, msg);
+  }
+  
+  void severe(std::string msg)
+  {
+    log(Level::SEVERE, msg);
+  }
   
   /**
    * @param level Default logging level
@@ -116,7 +146,7 @@ private:
   std::vector<std::ostream*> streams;
   std::string name; // Name of the Logger
   Level logLevel; // Current logging level
-  Level ignoreLevel;
+  Level ignoreLevel; // Ignore this level and lower
   bool enabled; // Is logging enabled?
 };
 

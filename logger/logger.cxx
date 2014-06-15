@@ -31,7 +31,8 @@ Logger::Logger(std::string name, Level level, std::ostream &initStream)
 {
   this->name = name;
   setLevel(level);
-  setIgnoreLevel(Level::CONFIG);
+  setIgnoreLevel(Level::DEBUG);
+  enable();
   addStream(initStream);
 }
   
@@ -42,24 +43,24 @@ void Logger::log(std::string message)
 
 void Logger::log(Level level, std::string message)
 {
-  if (level <= ignoreLevel || !enabled) // Not interested in this pirority message
+  if (level <= ignoreLevel || !enabled) // Not interested in this priority message
     return;
   
   std::string sLevel;
   
   switch (level)
   {
-    case Level::FINE:
-      sLevel = "FINE";
+    case Level::TRACE:
+      sLevel = "TRACE";
       break;
-    case Level::CONFIG:
-      sLevel = "CONFIG";
+    case Level::DEBUG:
+      sLevel = "DEBUG";
       break;
     case Level::INFO:
       sLevel = "INFO";
       break;
-    case Level::WARNING:
-      sLevel = "WARNING";
+    case Level::WARN:
+      sLevel = "WARN";
       break;
     case Level::ERROR:
       sLevel = "ERROR";
