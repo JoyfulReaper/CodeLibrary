@@ -45,13 +45,16 @@ namespace cppLua
     assert(lua_checkstack(lua, 1));
     const int err = luaL_loadstring(lua, script.c_str());
     if (err != LUA_OK)
-      throw luaExcept("Syntax error in script");
+    {
+      throw luaExcept(lua_tostring(lua, -1));
+      // FIXME: Should we pop this?
+    }
     
     const int errCall = lua_pcall(lua, 0, LUA_MULTRET, 0);
     if (errCall != LUA_OK)
     {
       throw luaExcept(lua_tostring(lua, -1));
-      // FIXME: should we pop here?
+      // FIXME: should we pop this?
     }
     
     return luaStackResult(lua, stackTop);

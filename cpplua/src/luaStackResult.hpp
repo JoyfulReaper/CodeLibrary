@@ -27,15 +27,47 @@
 
 #include <lua.hpp>
 #include <string>
+#include <cassert>
+
+#include "luaStackItem.hpp"
 
 namespace cppLua
 {
   class luaStackResult
   {
   public:
-    luaStackResult(lua_State *lua, int prevStackTop) : prevStackTop(prevStackTop), lua(lua) {}
+    luaStackResult(lua_State *lua, int prevStackTop) : prevStackTop(prevStackTop), numRetVal(lua_gettop(lua) - prevStackTop), lua(lua)
+    {
+	assert(lua);
+	assert(numRetVal >= 0);
+    }
+    
+    ~luaStackResult()
+    {
+      assert(lua_gettop(lua) == prevStackTop + numRetVal);
+      lua_settop(lua, prevStackTop);
+    }
+    
+    void operator=(const luaStackResult &rhs) = delete;
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    /**
+     * @return Number of items in result
+     */
+    size_t getNumItems() const { return numRetVal; }
+    
+    /**
+     * @param index Index of items
+     * @return item at given index
+     */
+    luaStackItem getItem(int index = 1) const;
+    int getStackPos(int index) const;
+    
+    
   private:
     int prevStackTop;
+    int numRetVal;
     lua_State *lua;
   };
 }
