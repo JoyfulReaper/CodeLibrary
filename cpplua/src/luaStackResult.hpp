@@ -34,4 +34,5 @@ namespace cppLua
   {
   public:
   };
-  #endif
+}
+#endif

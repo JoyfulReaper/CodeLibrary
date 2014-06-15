@@ -39,9 +39,9 @@ namespace cppLua
     lua_close(lua);
   }
   
-  luaEngine::doString(std::string)
+  void luaEngine::doString(std::string)
   {
-    int top = lua_gettop;
+    int top = lua_gettop(lua);
     
   }
   

@@ -1,17 +1,25 @@
+#ifndef _LUA_EXCEPT_H_
+#define _LUA_EXCEPT_H_
+
 #include <exception>
 #include <iostream>
 #include <string>
 
-
-class luaExcept: public exception
+class luaExcept : public std::exception
 {
+public:
+  luaExcept(std::string error)
+  {
+    msg = error;
+  }
+  
+  const char* what()
+  {
+    msg = "LuaExcept: " + msg;
+    return (msg.c_str());
+  }
 private:
   std::string msg;
-public:
-  luaExcept(std::string input) : msg(input) {}
-  const char* what() 
-  {
-    msg = "LuaException: " + msg;
-    return msg.c_str();
-  }
 };
+
+#endif
