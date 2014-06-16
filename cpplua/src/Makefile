@@ -7,14 +7,11 @@ CFLAGS = -c -Wall -Wextra -std=c++11 -ggdb -O0
 
 all: test
 
-test: test.o luaEngine.o luaStackResult.o luaStackItem.o
-	$(CC) test.o luaEngine.o luaStackResult.o luaStackItem.o -llua -lm -o test
+test: test.o luaEngine.o luaStackResult.o
+	$(CC) test.o luaEngine.o luaStackResult.o -llua -lm -o test
 
-luaEngine.o: luaEngine.cxx luaEngine.hpp luaExcept.hpp luaStackItem.hpp luaStackItem.cxx luaStackResult.hpp
+luaEngine.o: luaEngine.cxx luaEngine.hpp luaExcept.hpp luaStackItem.hpp luaStackResult.hpp
 	$(CC) $(CFLAGS) -c luaEngine.cxx
-	
-luaStackItem.o: luaStackItem.cxx
-	$(CC) $(CFLAGS) -c luaStackItem.cxx
 	
 luaStackResult.o: luaStackResult.cxx
 	$(CC) $(CFLAGS) -c luaStackResult.cxx

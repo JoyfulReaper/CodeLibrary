@@ -46,8 +46,6 @@ namespace cppLua
     
     lua_State* getLuaState() const {return lua;};
     
-    template <class T> T getGlobal(T name);
-    
     void stackDump();
     
   private:

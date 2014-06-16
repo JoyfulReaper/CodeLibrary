@@ -11,12 +11,13 @@ int main(void)
 {
   luaEngine l;
   try {
-    luaStackResult res = l.doString("print(\"HELLO\") return 1");
+    luaStackResult res = l.doString("print(\"HELLO\") return 16");
     cout << "number of items returned: " << res.getNumItems() << "\n"; 
     luaStackItem I = res.getItem();
     int type = I.getTypeId();
     if (type == LUA_TNUMBER)
       cout << "Number\n";
+    cout << I.getAs<int>() << endl;
   } catch (std::exception &e)
   {
     cout << e.what();
