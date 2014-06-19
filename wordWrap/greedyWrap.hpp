@@ -49,7 +49,7 @@ public:
   /**
    * @return The width to perform word wrap at
    */
-  size_t getLineWidth() { return lineWidth; }
+  size_t getLineWidth() const { return lineWidth; }
   
   /**
    * @param ss stringstrem to word wrap
@@ -62,7 +62,7 @@ public:
 private:
   size_t lineWidth;
  
-  bool getWord(std::stringstream &ss, std::string &outWord);
+  bool getWord(std::stringstream &ss, std::string &outWord) const;
 };
 
 #endif

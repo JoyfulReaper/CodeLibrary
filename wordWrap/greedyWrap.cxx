@@ -62,12 +62,12 @@ std::string GreedyWrap::lineWrap(std::string string)
   return lineWrap(ss);
 }
 
-bool GreedyWrap::getWord(std::stringstream &ss, std::string &outWord)
+bool GreedyWrap::getWord(std::stringstream &ss, std::string &outWord) const
 {
   std::string word = "";
-  char letter;
   while( ss.good() )
   {
+    char letter;
     letter = ss.get();
     
     if (letter == ' ' || !ss.good())
