@@ -3,8 +3,8 @@ CC = g++
 
 all: test
 
-test: test.o
+test: test.o test.cpp greedyWrap.cxx greedyWrap.hpp
 	$(CC) test.cpp greedyWrap.cxx -o test
 	
 clean:
-	rm *.o test
+	rm -f *.o test
