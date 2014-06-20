@@ -57,6 +57,10 @@ public:
    */
   std::string lineWrap(std::stringstream &ss);
   
+  /**
+   * @param string The string to word wrap
+   * @return A word wrapped string
+   */
   std::string lineWrap(std::string string);
   
 private:

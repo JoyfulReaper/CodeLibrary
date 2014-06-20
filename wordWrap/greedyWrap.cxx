@@ -26,9 +26,8 @@
 
 #include "greedyWrap.hpp"
 
-// TODO: Probably need to strip tabs (/t) maybe others
-
 static const size_t SPACE_WIDTH = 1;
+static const size_t TAB_WIDTH = 8;
 
 std::string GreedyWrap::lineWrap(std::stringstream &ss)
 {
@@ -69,6 +68,14 @@ bool GreedyWrap::getWord(std::stringstream &ss, std::string &outWord) const
   {
     char letter;
     letter = ss.get();
+    
+    if (letter == '\t')
+    {
+      for (size_t i; i < TAB_WIDTH; i++)
+	word += " ";
+      outWord = word;
+      return true;
+    }
     
     if (letter == ' ' || !ss.good())
     {
