@@ -32,7 +32,7 @@ static const size_t TAB_WIDTH = 8;
 std::string GreedyWrap::lineWrap(std::stringstream &ss)
 {
   size_t lineWidth = getLineWidth();
-  int spaceLeft = lineWidth;
+  size_t spaceLeft = lineWidth;
   
   std::string output;
   std::string word;
@@ -71,7 +71,7 @@ bool GreedyWrap::getWord(std::stringstream &ss, std::string &outWord) const
     
     if (letter == '\t')
     {
-      for (size_t i; i < TAB_WIDTH; i++)
+      for (size_t i = 0; i < TAB_WIDTH; i++)
 	word += " ";
       outWord = word;
       return true;
