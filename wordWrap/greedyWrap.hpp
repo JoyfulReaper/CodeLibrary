@@ -44,7 +44,7 @@ public:
    * Set the line width
    * @param width The width to perform word wrap at
    */
-  void setLineWidth(size_t width) { lineWidth = width; }
+  void setLineWidth(size_t width) { this->lineWidth = width; }
   
   /**
    * @return The width to perform word wrap at
