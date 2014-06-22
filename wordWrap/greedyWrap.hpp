@@ -65,8 +65,8 @@ public:
   
 private:
   size_t lineWidth;
- 
-  bool getWord(std::stringstream &ss, std::string &outWord) const;
+  size_t spaceLeft;
+  bool getWord(std::stringstream &ss, std::string &outWord);
 };
 
 #endif
