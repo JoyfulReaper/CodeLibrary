@@ -3,7 +3,7 @@ ADTs/DynamicArray/test
 ADTs/Bag/test
 ADTs/LinkedList/test
 ADTs/Stack/test
-
+wordWrap/test
 docs/*
 *~
 
