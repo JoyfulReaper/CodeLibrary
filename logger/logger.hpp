@@ -131,7 +131,7 @@ public:
    */
   void enable();
   
-  /*
+  /**
    * Disable Logging
    */
   void disable();
@@ -146,8 +146,8 @@ private:
   std::vector<std::ostream*> streams;
   std::string name; // Name of the Logger
   Level logLevel; // Current logging level
-  Level ignoreLevel; // Ignore this level and lower
-  bool enabled; // Is logging enabled?
+  Level ignoreLevel = Level::DEBUG; // Ignore this level and lower
+  bool enabled = true; // Is logging enabled?
 };
 
 #endif

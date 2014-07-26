@@ -27,12 +27,10 @@
 
 #include "logger.hpp"
 
-Logger::Logger(std::string name, Level level, std::ostream &initStream)
+Logger::Logger(std::string name, Level level, std::ostream &initStream) :
+  name(name),
+  logLevel(level)
 {
-  this->name = name;
-  setLevel(level);
-  setIgnoreLevel(Level::DEBUG);
-  enable();
   addStream(initStream);
 }
   
